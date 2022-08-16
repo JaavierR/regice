@@ -1,0 +1,44 @@
+---
+export interface Props {
+  image?: string | null;
+}
+
+const { image } = Astro.props as Props;
+---
+
+<header
+  class="my-16 flex w-full flex-col-reverse justify-between px-4 md:flex-row md:items-center"
+>
+  <div class="w-full space-y-2 md:w-8/12 stylistic-alternates">
+    <div class="text-xl font-semibold dark:text-white md:text-3xl">
+      <h2>Self taught</h2>
+      <h2>Software Engineer and ML enthusiast</h2>
+    </div>
+    <p class="text-gray-500 dark:text-zinc-400">
+      Hi there, my name is Javier. I'm a passionate of technology, I like build
+      complex web sites and try new things related to Web Development,
+      Artificial Intelligence and Data Science. I'm also teaching at the
+      <a
+        href="https://www.usach.cl/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="underline hover:text-slate-800 dark:text-purple-300 dark:hover:text-purple-500"
+      >
+        University of Santiago of Chile.
+      </a>
+    </p>
+  </div>
+  <div>
+    {
+      image ? (
+        <img
+          src={image}
+          alt="Javier"
+          class="rounded-full h-32 w-32 md:h-48 md:w-48"
+        />
+      ) : (
+        <div class="block rounded-full h-32 w-32 md:w-48 md:h-48 animate-pulse bg-gray-100 bg-no-repeat dark:bg-zinc-700" />
+      )
+    }
+  </div>
+</header>

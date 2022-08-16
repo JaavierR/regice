@@ -1,26 +1,24 @@
 ---
 export interface Props {
-	title: string;
+  title: string;
 }
 
 const { title } = Astro.props as Props;
 ---
 
 <!DOCTYPE html>
-<html lang="en" class="bg-zinc-800">
+<html lang="en" class="bg-zinc-900">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
 
-<head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width" />
-	<link rel="icon" type="image/x-icon" href="/favicon.ico" />
-	<meta name="generator" content={Astro.generator} />
-	<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <title>{title}</title>
+  </head>
 
-	<title>{title}</title>
-</head>
-
-<body>
-	<slot />
-</body>
-
+  <body class="antialiased">
+    <slot />
+  </body>
 </html>

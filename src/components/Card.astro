@@ -1,21 +1,20 @@
 ---
+import IconTech from "./IconTech.astro";
+
 export interface Props {
-	title: string;
-	body: string;
-	href: string;
+  brand: string;
 }
 
-const { href, title, body } = Astro.props as Props;
+const { brand } = Astro.props as Props;
 ---
 
-<li class="bg-zinc-900/30 backdrop-blur-md border border-zinc-900 rounded-md py-4 px-6 text-white">
-	<a href={href}>
-		<h2 class="font-semibold text-xl">
-			{title}
-			<span>&rarr;</span>
-		</h2>
-		<p>
-			{body}
-		</p>
-	</a>
+<li
+  class="flex justify-between items-center bg-white/10 backdrop-filter backdrop-blur-md border border-white/30 rounded-md py-4 px-6 text-white"
+>
+  <p>
+    {brand}
+  </p>
+  <div class="shrink-0 w-7 h-7">
+    <IconTech brand={brand} />
+  </div>
 </li>
