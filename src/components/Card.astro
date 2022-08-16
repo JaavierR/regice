@@ -8,9 +8,9 @@ export interface Props {
 const { href, title, body } = Astro.props as Props;
 ---
 
-<li class="">
+<li class="bg-zinc-900/30 backdrop-blur-md border border-zinc-900 rounded-md py-4 px-6 text-white">
 	<a href={href}>
-		<h2>
+		<h2 class="font-semibold text-xl">
 			{title}
 			<span>&rarr;</span>
 		</h2>
