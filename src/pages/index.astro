@@ -1,8 +1,8 @@
 ---
-import "../style/global.css";
-import Layout from "../layouts/Layout.astro";
-import Card from "../components/Card.astro";
-import Header from "../components/Header.astro";
+import "@/style/global.css";
+import Layout from "@/layouts/Layout.astro";
+import Card from "@/components/Card.astro";
+import Header from "@/components/Header.astro";
 
 const res = await fetch("https://api.github.com/users/JaavierR");
 const image = (await res.json()).avatar_url;
@@ -18,7 +18,6 @@ const skills = [
   "Next.js",
   "Vue.js",
   "Nuxt.js",
-  "HTML5",
   "Tailwind CSS",
   "Python",
 ];
