@@ -1,15 +1,22 @@
+---
+import { GithubIcon } from "./GithubIcon";
+import ThemeToggle from "./ThemeToggle";
+---
+
 <nav class="w-full mt-6 dark:text-white">
   <div class="container relative mx-auto w-11/12 px-4 sm:w-9/12">
     <div class="flex items-center justify-between">
       <span>JR</span>
 
-      <div class="flex items-center space-x-3">
+      <div class="flex items-center space-x-4">
+        <ThemeToggle client:idle />
         <a
           href="http://github.com/JaavierR/website"
           target="_blank"
           rel="noopener noreferrer"
+          class="text-zinc-500 hover:text-zinc-600 dark:hover:text-zinc-400"
         >
-          GH
+          <GithubIcon className="h-5 w-5" />
         </a>
       </div>
     </div>
