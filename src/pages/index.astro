@@ -4,9 +4,6 @@ import Layout from "@/layouts/Layout.astro";
 import Card from "@/components/Card.astro";
 import Header from "@/components/Header.astro";
 
-const res = await fetch("https://api.github.com/users/JaavierR");
-const image = (await res.json()).avatar_url;
-
 const skills = [
   "JavaScript",
   "TypeScript",
@@ -25,7 +22,7 @@ const skills = [
 
 <Layout title="Welcome to my site.">
   <main class="max-w-4xl mx-auto">
-    <Header image={image} />
+    <Header image="https://avatars.githubusercontent.com/u/4650238?v=4" />
 
     <section id="technologies">
       <h3

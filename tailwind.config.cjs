@@ -1,5 +1,8 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
 const plugin = require("tailwindcss/plugin");
+const {
+  default: flattenColorPalette,
+} = require("tailwindcss/lib/util/flattenColorPalette");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -7,6 +10,7 @@ module.exports = {
     "./public/**/*.html",
     "./src/**/*.{astro,js,jsx,svelte,ts,tsx,vue,md}",
   ],
+  darkMode: "class",
   theme: {
     extend: {
       fontFamily: {
@@ -15,7 +19,7 @@ module.exports = {
     },
   },
   plugins: [
-    plugin(function ({ addUtilities }) {
+    plugin(function ({ addUtilities, matchUtilities, theme }) {
       addUtilities({
         ".alternated-digits": {
           fontFeatureSettings: '"ss01"',
@@ -27,6 +31,18 @@ module.exports = {
           fontFeatureSettings: '"salt"',
         },
       });
+
+      matchUtilities(
+        {
+          highlight: (value) => ({
+            boxShadow: `inset 0 1px 0 0 ${value}`,
+          }),
+        },
+        {
+          values: flattenColorPalette(theme("backgroundColor")),
+          type: "color",
+        }
+      );
     }),
   ],
 };
