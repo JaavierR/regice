@@ -8,13 +8,14 @@ export interface Props {
 const { brand } = Astro.props as Props;
 ---
 
-<li
-  class="flex justify-between items-center bg-white/10 backdrop-filter backdrop-blur-md border dark:hover:bg-white/20 border-white/30 rounded-md py-4 px-6 text-white"
->
-  <p>
+<li class="bg-white/10 border rounded-md py-4 px-6 text-slate-800">
+  <p class="sr-only">
     {brand}
   </p>
-  <div class="shrink-0 w-7 h-7">
+  <div
+    class="shrink-0 w-7 h-7 items-center justify-center block mx-auto"
+    data-tooltip={brand}
+  >
     <IconTech brand={brand} />
   </div>
 </li>
