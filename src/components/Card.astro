@@ -10,7 +10,7 @@ const { brand } = Astro.props as Props;
 
 <li class="rounded-md py-4 px-6 text-slate-800">
   <div
-    class="tooltip shrink-0 w-10 h-10 items-center justify-center block mx-auto"
+    class="after:content-[attr(data-tooltip)] relative after:absolute after:bottom-full after:text-white after:rounded after:bg-gray-900/90 after:backdrop-blur-sm after:text-sm after:block after:max-w-lg after:left-1/2 after:-translate-x-1/2 after:translate-y-4 shrink-0 w-10 h-10 items-center justify-center block mx-auto after:overflow-hidden after:px-2 after:py-1 after:text-ellipsis after:pointer-events-none after:whitespace-nowrap after:transition-all after:duration-300 after:ease-in-out after:opacity-0 after:focus:opacity-100 after:hover:opacity-100 after:hover:-translate-x-1/2 after:hover:-translate-y-4 after:focus:-translate-x-1/2 after:focus:-translate-y-4"
     data-tooltip={brand}
   >
     <IconTech brand={brand} />
@@ -19,78 +19,3 @@ const { brand } = Astro.props as Props;
     {brand}
   </span>
 </li>
-
-<style lang="scss">
-  // Tooltips
-  .tooltip {
-    position: relative;
-    &::after {
-      @apply bg-gray-900/90 rounded text-white text-sm z-10;
-      bottom: 100%;
-      content: attr(data-tooltip);
-      display: block;
-      left: 50%;
-      max-width: 32rem;
-      opacity: 0;
-      overflow: hidden;
-      padding: 0.4rem 0.8rem;
-      pointer-events: none;
-      position: absolute;
-      text-overflow: ellipsis;
-      transform: translate(-50%, 1rem);
-      transition: all 0.2s ease;
-      white-space: nowrap;
-    }
-    &:focus,
-    &:hover {
-      &::after {
-        opacity: 1;
-        transform: translate(-50%, -0.5rem);
-      }
-    }
-    &[disabled],
-    &.disabled {
-      pointer-events: auto;
-    }
-    &.tooltip-right {
-      &::after {
-        bottom: 50%;
-        left: 100%;
-        transform: translate(-1rem, 50%);
-      }
-      &:focus,
-      &:hover {
-        &::after {
-          transform: translate(0.5rem, 50%);
-        }
-      }
-    }
-    &.tooltip-bottom {
-      &::after {
-        bottom: auto;
-        top: 100%;
-        transform: translate(-50%, -1rem);
-      }
-      &:focus,
-      &:hover {
-        &::after {
-          transform: translate(-50%, 0.5rem);
-        }
-      }
-    }
-    &.tooltip-left {
-      &::after {
-        bottom: 50%;
-        left: auto;
-        right: 100%;
-        transform: translate(1rem, 50%);
-      }
-      &:focus,
-      &:hover {
-        &::after {
-          transform: translate(-0.5rem, 50%);
-        }
-      }
-    }
-  }
-</style>
