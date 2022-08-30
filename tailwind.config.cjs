@@ -32,6 +32,14 @@ module.exports = {
         sans: ["Inter", ...defaultTheme.fontFamily.sans],
         display: ["Lexend", ...defaultTheme.fontFamily.sans],
       },
+      animation: {
+        "gradient-loop": "loop 4s ease-in-out infinite",
+      },
+      keyframes: {
+        loop: {
+          to: { backgroundPosition: "200% center" },
+        },
+      },
     },
   },
   plugins: [
