@@ -1,5 +1,5 @@
 ---
-import { GithubIcon } from "./GithubIcon";
+import GithubIcon from "./GithubIcon.astro";
 import ThemeToggle from "./ThemeToggle";
 ---
 
@@ -8,15 +8,18 @@ import ThemeToggle from "./ThemeToggle";
     <div class="flex items-center justify-between">
       <span>JR</span>
 
-      <div class="flex items-center space-x-4">
+      <div
+        class="relative flex basis-0 justify-end gap-6 sm:gap-8 md:flex-grow"
+      >
         <ThemeToggle client:idle />
         <a
-          href="http://github.com/JaavierR/website"
+          href="http://github.com/JaavierR/regice"
           target="_blank"
           rel="noopener noreferrer"
-          class="text-zinc-500 hover:text-zinc-600 dark:hover:text-zinc-400"
         >
-          <GithubIcon className="h-5 w-5" />
+          <GithubIcon
+            class="h-6 w-6 fill-slate-400 hover:fill-slate-500 dark:hover:fill-slate-300"
+          />
         </a>
       </div>
     </div>

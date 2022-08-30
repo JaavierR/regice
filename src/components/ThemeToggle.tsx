@@ -30,12 +30,15 @@ export function ThemeToggle({ panelClassName = "mt-4" }) {
   return (
     <Listbox value={setting} onChange={setSetting}>
       <Listbox.Label className="sr-only">Theme</Listbox.Label>
-      <Listbox.Button type="button">
+      <Listbox.Button
+        type="button"
+        className="flex h-6 w-6 items-center justify-center rounded-lg shadow-md shadow-black/5 ring-1 ring-black/5 dark:bg-zinc-700 dark:ring-inset dark:ring-white/5"
+      >
         <span className="dark:hidden">
-          <SunIcon className="h-6 w-6" selected={setting !== "system"} />
+          <SunIcon className="h-5 w-5" selected={setting !== "system"} />
         </span>
         <span className="hidden dark:inline">
-          <MoonIcon className="h-6 w-6" selected={setting !== "system"} />
+          <MoonIcon className="h-5 w-5" selected={setting !== "system"} />
         </span>
       </Listbox.Button>
       <Listbox.Options
@@ -50,11 +53,11 @@ export function ThemeToggle({ panelClassName = "mt-4" }) {
               <li
                 className={clsx(
                   "flex cursor-pointer items-center py-1 px-2",
-                  selected && "text-violet-500",
+                  selected && "text-cyan-500",
                   active && "bg-zinc-50 dark:bg-zinc-600/30"
                 )}
               >
-                <Icon selected={selected} className="mr-2 h-6 w-6" />
+                <Icon selected={selected} className="mr-4 h-6 w-6" />
                 {label}
               </li>
             )}
