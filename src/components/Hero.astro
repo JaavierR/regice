@@ -1,0 +1,91 @@
+---
+import ButtonLink from "./ButtonLink.astro";
+
+export interface Props {
+  image?: string | null;
+}
+
+const { image } = Astro.props as Props;
+---
+
+<div class="overflow-hidden multiple-color">
+  <div class="py-16 sm:px-2 lg:relative lg:py-20 lg:px-0 stylistic-alternates">
+    <div
+      class="mx-auto grid max-w-2xl grid-cols-1 items-center gap-y-16 gap-x-8 px-4 lg:max-w-7xl lg:grid-cols-2 lg:px-8 xl:gap-x-16 xl:px-12"
+    >
+      <div class="relative z-10 md:text-center lg:text-left">
+        <div class="relative">
+          <h2
+            class="inline bg-gradient-to-r from-indigo-200 via-sky-400 to-indigo-200 bg-clip-text text-5xl font-display tracking-tight text-transparent"
+          >
+            Software Engineer &amp; <br /> ML enthusiast.
+          </h2>
+          <p class="text-xl mt-3 tracking-tight text-zinc-400">
+            Hi there, my name is Javier. I'm a passionate of technology, I like
+            build complex web sites and try new things related to Web
+            Development, Artificial Intelligence and Data Science. I'm also
+            teaching at the
+            <a
+              href="https://www.usach.cl/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="underline text-cyan-300 hover:text-sky-200"
+            >
+              University of Santiago of Chile.
+            </a>
+          </p>
+          <div class="mt-8 flex gap-4 md:justify-center lg:justify-start">
+            <ButtonLink href="mailto:example@example.falso">
+              Contact me
+            </ButtonLink>
+            <ButtonLink variant="secondary" href="/">My projects</ButtonLink>
+          </div>
+        </div>
+      </div>
+      <div class="relative lg:static xl:pl-10">
+        <div class="relative w-fit mx-auto">
+          <div
+            class="absolute inset-0 rounded-full bg-gradient-to-tr from-sky-300 via-sky-300/70 to-blue-300 opacity-10 blur-lg"
+          >
+            <div
+              class="absolute inset-0 rounded-full bg-gradient-to-tr from-sky-300 via-sky-300/70 to-blue-300 opacity-10"
+            >
+            </div>
+          </div>
+          {
+            image ? (
+              <div class="mx-auto w-fit rounded-full bg-slate-800/80 ring-1 ring-white/20 backdrop-blur">
+                <img
+                  src={image}
+                  alt="Javier profile picture github"
+                  class="mx-auto h-56 w-56 rounded-full"
+                />
+              </div>
+            ) : (
+              <div class="mx-auto block h-56 w-56 animate-pulse rounded-full bg-slate-700/30 bg-no-repeat" />
+            )
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .multiple-color {
+    background: linear-gradient(90deg, #0f172a, #1e293b, #334155);
+    animation: gradient 15s ease infinite;
+  }
+
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+</style>

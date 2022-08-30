@@ -2,7 +2,7 @@
 import "@/style/global.css";
 import Layout from "@/layouts/Layout.astro";
 import Card from "@/components/Card.astro";
-import Header from "@/components/Header.astro";
+import Hero from "@/components/Hero.astro";
 
 const skills = [
   "JavaScript",
@@ -21,8 +21,8 @@ const skills = [
 ---
 
 <Layout title="Home">
-  <main class="container relative mx-auto w-11/12 px-4 sm:w-9/12">
-    <Header image="https://avatars.githubusercontent.com/u/4650238?v=4" />
+  <main>
+    <Hero image="https://avatars.githubusercontent.com/u/4650238?v=4" />
 
     <section id="technologies">
       <h3
