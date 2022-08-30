@@ -42,6 +42,10 @@ const { title } = Astro.props as Props;
   <body
     class="antialiased text-zinc-900 dark:text-white flex flex-col flex-1 bg-zinc-50 dark:bg-zinc-900"
   >
+    <div
+      class="min-h-[0.1875rem] w-full bg-gradient-to-r from-transparent via-cyan-500"
+    >
+    </div>
     <Navbar />
     <slot />
   </body>
