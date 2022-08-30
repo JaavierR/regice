@@ -13,7 +13,7 @@ export function PcIcon({
         strokeLinejoin="round"
         className={
           selected
-            ? "stroke-violet-500 fill-violet-400/20"
+            ? "fill-violet-400/20 stroke-violet-500"
             : "stroke-zinc-400 dark:stroke-zinc-500"
         }
       />
