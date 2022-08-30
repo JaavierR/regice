@@ -15,13 +15,12 @@ const { image } = Astro.props as Props;
     >
       <div class="relative z-10 md:text-center lg:text-left">
         <div class="relative">
-          <!-- <h2 class="inline text-5xl font-display tracking-tight"> -->
           <h2
             class="inline bg-gradient-to-r from-indigo-200 via-sky-400 to-indigo-200 bg-clip-text text-5xl font-display tracking-tight text-transparent animate-gradient-loop bg-[length:200%_auto]"
           >
             Software Engineer &amp; <br /> ML enthusiast.
           </h2>
-          <p class="text-xl mt-3 tracking-tight text-zinc-400">
+          <p class="text-xl mt-3 tracking-tight text-slate-400">
             Hi there, my name is Javier. I'm a passionate of technology, I like
             build complex web sites and try new things related to Web
             Development, Artificial Intelligence and Data Science. I'm also
@@ -48,14 +47,14 @@ const { image } = Astro.props as Props;
           <div
             class="absolute inset-0 rounded-full bg-gradient-to-tr from-sky-300 via-sky-300/70 to-blue-300 opacity-10 blur-lg"
           >
-            <div
-              class="absolute inset-0 rounded-full bg-gradient-to-tr from-sky-300 via-sky-300/70 to-blue-300 opacity-10"
-            >
-            </div>
+          </div>
+          <div
+            class="absolute inset-0 rounded-full bg-gradient-to-tr from-sky-300 via-sky-300/70 to-blue-300 opacity-10"
+          >
           </div>
           {
             image ? (
-              <div class="mx-auto w-fit rounded-full bg-slate-800/80 ring-1 ring-white/20 backdrop-blur">
+              <div class="mx-auto w-fit rounded-full bg-slate-800/10 ring-1 ring-white/20 backdrop-blur">
                 <img
                   src={image}
                   alt="Javier profile picture github"
