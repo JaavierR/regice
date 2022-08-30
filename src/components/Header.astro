@@ -7,7 +7,7 @@ const { image } = Astro.props as Props;
 ---
 
 <header
-  class="my-16 flex w-full flex-col-reverse justify-between px-4 md:flex-row md:items-center"
+  class="my-16 flex w-full flex-col-reverse justify-between md:flex-row md:items-center"
 >
   <div class="w-full space-y-2 md:w-8/12 stylistic-alternates">
     <div class="text-xl font-semibold dark:text-white md:text-3xl">
@@ -34,10 +34,10 @@ const { image } = Astro.props as Props;
         <img
           src={image}
           alt="Javier"
-          class="rounded-full h-32 w-32 md:h-48 md:w-48"
+          class="h-32 w-32 rounded-full md:h-48 md:w-48"
         />
       ) : (
-        <div class="block rounded-full h-32 w-32 md:w-48 md:h-48 animate-pulse bg-gray-100 bg-no-repeat dark:bg-zinc-700" />
+        <div class="block h-32 w-32 animate-pulse rounded-full bg-gray-100 bg-no-repeat dark:bg-zinc-700 md:h-48 md:w-48" />
       )
     }
   </div>
