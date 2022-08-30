@@ -1,0 +1,37 @@
+---
+import Card from "./Card.astro";
+
+const skills = [
+  "JavaScript",
+  "TypeScript",
+  "MySQL",
+  "PostgreSQL",
+  "React",
+  "Next.js",
+  "Vue.js",
+  "Nuxt.js",
+  "Tailwind CSS",
+  "PHP",
+  "Laravel",
+  "Python",
+];
+---
+
+<section
+  id="technologies"
+  class="relative mx-auto flex max-w-7xl justify-center px-4 lg:px-8 xl:px-12"
+>
+  <div class="min-w-0 flex-auto py-16 lg:max-w-none">
+    <h3
+      class="text-2xl font-medium stylistic-alternates tracking-tight text-slate-900 dark:text-white"
+    >
+      Technologies I use
+    </h3>
+    <ul
+      role="list"
+      class="mt-10 grid grid-cols-4 md:grid-cols-6 gap-x-4 gap-y-8 md:gap-y-12"
+    >
+      {skills.map((skill) => <Card brand={skill} />)}
+    </ul>
+  </div>
+</section>
