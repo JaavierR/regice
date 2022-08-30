@@ -32,7 +32,7 @@ export function ThemeToggle({ panelClassName = "mt-4" }) {
       <Listbox.Label className="sr-only">Theme</Listbox.Label>
       <Listbox.Button
         type="button"
-        className="flex h-6 w-6 items-center justify-center rounded-lg shadow-md shadow-black/5 ring-1 ring-black/5 dark:bg-zinc-700 dark:ring-inset dark:ring-white/5"
+        className="flex h-6 w-6 items-center justify-center rounded-lg shadow-md shadow-black/5 ring-1 ring-black/5 dark:bg-slate-700 dark:ring-inset dark:ring-white/5"
       >
         <span className="dark:hidden">
           <SunIcon className="h-5 w-5" selected={setting !== "system"} />
@@ -43,7 +43,7 @@ export function ThemeToggle({ panelClassName = "mt-4" }) {
       </Listbox.Button>
       <Listbox.Options
         className={clsx(
-          "absolute top-full right-0 z-50 w-36 overflow-hidden rounded-lg bg-white py-1 text-sm font-semibold text-zinc-700 shadow-lg ring-1 ring-zinc-900/10 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-0 dark:highlight-white/5",
+          "absolute top-full right-0 z-50 w-36 overflow-hidden rounded-lg bg-white py-1 text-sm font-semibold text-slate-700 shadow-lg ring-1 ring-slate-900/10 dark:bg-slate-800 dark:text-slate-300 dark:ring-0 dark:highlight-white/5",
           panelClassName
         )}
       >
@@ -54,7 +54,7 @@ export function ThemeToggle({ panelClassName = "mt-4" }) {
                 className={clsx(
                   "flex cursor-pointer items-center py-1 px-2",
                   selected && "text-cyan-500",
-                  active && "bg-zinc-50 dark:bg-zinc-600/30"
+                  active && "bg-slate-50 dark:bg-slate-600/30"
                 )}
               >
                 <Icon selected={selected} className="mr-4 h-6 w-6" />

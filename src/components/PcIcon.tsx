@@ -12,7 +12,7 @@ export function PcIcon({
         strokeWidth="2"
         strokeLinejoin="round"
         className={
-          selected ? "fill-cyan-400/20 stroke-cyan-500" : "stroke-zinc-400"
+          selected ? "fill-cyan-400/20 stroke-cyan-500" : "stroke-slate-400"
         }
       />
       <path
@@ -20,7 +20,7 @@ export function PcIcon({
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
-        className={selected ? "stroke-cyan-500" : "stroke-zinc-400"}
+        className={selected ? "stroke-cyan-500" : "stroke-slate-400"}
       />
     </svg>
   );
