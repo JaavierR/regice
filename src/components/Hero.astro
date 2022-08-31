@@ -8,7 +8,9 @@ export interface Props {
 const { image } = Astro.props as Props;
 ---
 
-<div class="overflow-hidden bg-slate-900">
+<div
+  class="overflow-hidden bg-slate-900 dark:-mb-32 dark:mt-[-4.5rem] dark:pb-32 dark:pt-[4.5rem] dark:lg:mt-[-4.75rem] dark:lg:pt-[4.75rem]"
+>
   <div class="py-16 sm:px-2 lg:relative lg:py-20 lg:px-0 stylistic-alternates">
     <div
       class="mx-auto grid max-w-2xl grid-cols-1 items-center gap-y-16 gap-x-8 px-4 lg:max-w-7xl lg:grid-cols-2 lg:px-8 xl:gap-x-16 xl:px-12"
@@ -21,22 +23,20 @@ const { image } = Astro.props as Props;
             Software Engineer &amp; <br /> ML enthusiast.
           </h2>
           <p class="text-xl mt-3 tracking-tight text-slate-400">
-            Hi there, my name is Javier. I'm a passionate of technology, I like
-            build complex web sites and try new things related to Web
-            Development, Artificial Intelligence and Data Science. I'm also
-            teaching at the
+            Hi, my name is Javier. I like to build cool looking stuff, code,
+            magic and photography. I'm also teaching at the
             <a
               href="https://www.usach.cl/"
               target="_blank"
               rel="noopener noreferrer"
               class="underline text-cyan-300 hover:text-sky-200"
             >
-              University of Santiago of Chile.
+              Universidad de Santiago de Chile.
             </a>
           </p>
           <div class="mt-8 flex gap-4 md:justify-center lg:justify-start">
-            <ButtonLink href="mailto:example@example.falso">
-              Contact me
+            <ButtonLink href="mailto:example@example.falso"
+              >Get in touch
             </ButtonLink>
             <ButtonLink variant="secondary" href="/">My projects</ButtonLink>
           </div>
