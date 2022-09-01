@@ -2,9 +2,10 @@
 export interface Props {
   variant?: "primary" | "secondary";
   href: string;
+  extraClasses?: string;
 }
 
-const { variant = "primary", href } = Astro.props;
+const { variant = "primary", href, extraClasses } = Astro.props;
 
 const styles = {
   primary:
@@ -14,4 +15,4 @@ const styles = {
 };
 ---
 
-<a class={styles[variant]} href={href}><slot /></a>
+<a class:list={[styles[variant], extraClasses]} href={href}><slot /></a>
