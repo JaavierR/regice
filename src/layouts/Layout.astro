@@ -8,16 +8,17 @@ const { title } = Astro.props as Props;
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html class="antialiased" lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <script>
+      type ThemeOpts = "light" | "dark" | "system";
       let mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
-      function updateTheme(savedTheme) {
+      function updateTheme(savedTheme?: ThemeOpts) {
         let theme = "system";
         try {
           if (!savedTheme) {
@@ -41,7 +42,7 @@ const { title } = Astro.props as Props;
         return theme;
       }
 
-      function updateThemeWithoutTransitions(savedTheme) {
+      function updateThemeWithoutTransitions(savedTheme: ThemeOpts) {
         updateTheme(savedTheme);
         document.documentElement.classList.add("[&_*]:!transition-none");
         window.setTimeout(() => {
@@ -51,8 +52,10 @@ const { title } = Astro.props as Props;
 
       document.documentElement.setAttribute("data-theme", updateTheme());
 
-      new MutationObserver(([{ oldValue }]) => {
-        let newValue = document.documentElement.getAttribute("data-theme");
+      new MutationObserver(([{ oldValue }]): void => {
+        let newValue = document.documentElement.getAttribute(
+          "data-theme"
+        ) as ThemeOpts;
         if (newValue !== oldValue) {
           try {
             window.localStorage.setItem("theme", newValue);
