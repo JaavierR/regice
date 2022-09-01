@@ -33,7 +33,7 @@ module.exports = {
         display: ["Lexend", ...defaultTheme.fontFamily.sans],
       },
       animation: {
-        "gradient-loop": "loop 4s ease-in-out infinite",
+        "gradient-loop": "loop 3s ease-in-out infinite",
       },
       keyframes: {
         loop: {
