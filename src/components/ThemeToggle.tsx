@@ -1,12 +1,12 @@
 import { useTheme } from "@/hooks/useTheme";
 import { Listbox } from "@headlessui/react";
 import clsx from "clsx";
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { MoonIcon } from "./MoonIcon";
 import { PcIcon } from "./PcIcon";
 import { SunIcon } from "./SunIcon";
 
-let settings = [
+const themes = [
   {
     value: "light",
     label: "Light",
@@ -25,20 +25,32 @@ let settings = [
 ];
 
 export function ThemeToggle({ panelClassName = "mt-4" }) {
-  let { setting, setSetting } = useTheme();
+  let [selectedTheme, setSelectedTheme] = useState<string | undefined>();
+
+  useEffect(() => {
+    if (selectedTheme) {
+      document.documentElement.setAttribute("data-theme", selectedTheme);
+    } else {
+      const filteredTheme = themes.find(
+        (theme) =>
+          theme.value === document.documentElement.getAttribute("data-theme")
+      );
+      setSelectedTheme(filteredTheme?.value);
+    }
+  }, [selectedTheme]);
 
   return (
-    <Listbox value={setting} onChange={setSetting}>
+    <Listbox value={selectedTheme} onChange={setSelectedTheme}>
       <Listbox.Label className="sr-only">Theme</Listbox.Label>
       <Listbox.Button
         type="button"
         className="flex h-6 w-6 items-center justify-center rounded-lg shadow-md shadow-black/5 ring-1 ring-black/5 dark:bg-slate-700 dark:ring-inset dark:ring-white/5"
       >
         <span className="dark:hidden">
-          <SunIcon className="h-5 w-5" selected={setting !== "system"} />
+          <SunIcon className="h-5 w-5" selected={selectedTheme !== "system"} />
         </span>
         <span className="hidden dark:inline">
-          <MoonIcon className="h-5 w-5" selected={setting !== "system"} />
+          <MoonIcon className="h-5 w-5" selected={selectedTheme !== "system"} />
         </span>
       </Listbox.Button>
       <Listbox.Options
@@ -47,7 +59,7 @@ export function ThemeToggle({ panelClassName = "mt-4" }) {
           panelClassName
         )}
       >
-        {settings.map(({ value, label, icon: Icon }) => (
+        {themes.map(({ value, label, icon: Icon }) => (
           <Listbox.Option key={value} value={value} as={Fragment}>
             {({ active, selected }) => (
               <li
@@ -67,5 +79,3 @@ export function ThemeToggle({ panelClassName = "mt-4" }) {
     </Listbox>
   );
 }
-
-export default ThemeToggle;

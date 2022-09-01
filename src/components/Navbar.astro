@@ -1,6 +1,6 @@
 ---
 import GithubIcon from "./GithubIcon.astro";
-import ThemeToggle from "./ThemeToggle";
+import { ThemeToggle } from "./ThemeToggle";
 ---
 
 <header
@@ -51,4 +51,17 @@ import ThemeToggle from "./ThemeToggle";
   }
 
   window.addEventListener("scroll", onScroll);
+  // new MutationObserver(([{ oldValue }]) => {
+  //   console.log("test");
+  //   let newValue = document.documentElement.getAttribute("data-theme");
+  //   if (newValue !== oldValue) {
+  //     try {
+  //       window.localStorage.setItem("theme", newValue);
+  //     } catch {}
+  //     updateThemeWithoutTransitions(newValue);
+  //   }
+  // }).observe(document.documentElement, {
+  //   attributeFilter: ["data-theme"],
+  //   attributeOldValue: true,
+  // });
 </script>
