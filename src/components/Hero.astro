@@ -35,10 +35,17 @@ const { image } = Astro.props as Props;
             </a>
           </p>
           <div class="mt-8 flex gap-4 md:justify-center lg:justify-start">
-            <ButtonLink href="mailto:example@example.falso"
+            <ButtonLink
+              href="mailto:example@example.falso"
+              extraClasses="highlight-white/5"
               >Get in touch
             </ButtonLink>
-            <ButtonLink variant="secondary" href="/">My projects</ButtonLink>
+            <ButtonLink
+              variant="secondary"
+              href="/"
+              extraClasses="highlight-white/5"
+              >My projects
+            </ButtonLink>
           </div>
         </div>
       </div>
