@@ -5,7 +5,7 @@ import { ThemeToggle } from "./ThemeToggle";
 
 <header
   id="header"
-  class="sticky top-0 z-50 bg-white py-5 shadow-md shadow-slate-900/5 transition duration-500 dark:shadow-none sm:px-6 lg:px-8 dark:bg-transparent"
+  class="sticky top-0 z-50 bg-white py-5 shadow-md shadow-slate-900/5 transition duration-500 dark:shadow-none dark:bg-transparent"
 >
   <div
     class="flex flex-wrap w-full items-center max-w-2xl lg:max-w-7xl mx-auto justify-between px-4 lg:px-8 xl:px-12"
@@ -15,7 +15,7 @@ import { ThemeToggle } from "./ThemeToggle";
     </div>
 
     <div class="relative flex basis-0 justify-end gap-6 sm:gap-8 md:flex-grow">
-      <ThemeToggle client:idle />
+      <ThemeToggle client:load />
       <a
         href="http://github.com/JaavierR/regice"
         target="_blank"
@@ -51,17 +51,4 @@ import { ThemeToggle } from "./ThemeToggle";
   }
 
   window.addEventListener("scroll", onScroll);
-  // new MutationObserver(([{ oldValue }]) => {
-  //   console.log("test");
-  //   let newValue = document.documentElement.getAttribute("data-theme");
-  //   if (newValue !== oldValue) {
-  //     try {
-  //       window.localStorage.setItem("theme", newValue);
-  //     } catch {}
-  //     updateThemeWithoutTransitions(newValue);
-  //   }
-  // }).observe(document.documentElement, {
-  //   attributeFilter: ["data-theme"],
-  //   attributeOldValue: true,
-  // });
 </script>
