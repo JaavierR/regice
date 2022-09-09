@@ -4,6 +4,7 @@ import Layout from "@/layouts/Layout.astro";
 import Hero from "@/components/Hero.astro";
 import Techs from "@/components/Techs.astro";
 import Work from "@/components/Work.astro";
+import ProfilePicture from "@/components/ProfilePicture.astro";
 
 const work = [
   {
@@ -15,7 +16,7 @@ const work = [
   },
   {
     company: "Universidad de Santiago de Chile",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Escudo_de_la_Universidad_de_Santiago-4.svg/800px-Escudo_de_la_Universidad_de_Santiago-4.svg.png",
+    logo: "imgs/logo-usach.svg",
     role: "Professor",
     startYear: 2021,
     endYear: 2022,
@@ -34,10 +35,13 @@ const work = [
   <main>
     <!-- TODO: Change logo & and add a nice patter for the bg with blur effects -->
     <Hero image="https://avatars.githubusercontent.com/u/4650238?v=4" />
-    <Techs />
     <div class="max-w-md mx-auto py-10">
       <Work work={work} />
     </div>
+    <div class="py-10 mx-auto max-w-md">
+      <ProfilePicture image="imgs/logo-dark.png" />
+    </div>
+    <Techs />
     <!-- TODO: About section -->
     <!-- Education, Work experience, some hobbies related to me -->
     <!-- TODO: Projects section -->
