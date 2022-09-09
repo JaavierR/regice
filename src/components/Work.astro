@@ -1,0 +1,111 @@
+---
+interface Work {
+  company: string;
+  logo: string;
+  role: string;
+  startYear: number;
+  endYear: number;
+}
+
+export interface Props {
+  work: Work[];
+}
+
+const { work } = Astro.props as Props;
+
+function isCurrentYear(year: number) {
+  return year === new Date().getFullYear();
+}
+
+function roleTime(startYear: number, endYear: number) {
+  let end: string | number = endYear;
+
+  if (isCurrentYear(endYear)) {
+    end = "Present";
+  }
+
+  return `${startYear} until ${end}`;
+}
+---
+
+<div class="rounded-2xl border border-stone-100 p-6 dark:border-stone-700/40">
+  <h2 class="flex text-sm font-semibold text-stone-900 dark:text-stone-100">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      class="w-6 h-6 flex-none"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M7.5 5.25a3 3 0 013-3h3a3 3 0 013 3v.205c.933.085 1.857.197 2.774.334 1.454.218 2.476 1.483 2.476 2.917v3.033c0 1.211-.734 2.352-1.936 2.752A24.726 24.726 0 0112 15.75c-2.73 0-5.357-.442-7.814-1.259-1.202-.4-1.936-1.541-1.936-2.752V8.706c0-1.434 1.022-2.7 2.476-2.917A48.814 48.814 0 017.5 5.455V5.25zm7.5 0v.09a49.488 49.488 0 00-6 0v-.09a1.5 1.5 0 011.5-1.5h3a1.5 1.5 0 011.5 1.5zm-3 8.25a.75.75 0 100-1.5.75.75 0 000 1.5z"
+        clip-rule="evenodd"
+        class="stroke-stone-400 dark:stroke-stone-500 fill-stone-100 dark:fill-stone-100/10"
+      ></path>
+      <path
+        d="M3 18.4v-2.796a4.3 4.3 0 00.713.31A26.226 26.226 0 0012 17.25c2.892 0 5.68-.468 8.287-1.335.252-.084.49-.189.713-.311V18.4c0 1.452-1.047 2.728-2.523 2.923-2.12.282-4.282.427-6.477.427a49.19 49.19 0 01-6.477-.427C4.047 21.128 3 19.852 3 18.4z"
+        class="stroke-stone-400 dark:stroke-stone-500 fill-stone-100 dark:fill-stone-100/10"
+      ></path>
+    </svg>
+
+    <span class="ml-3">Work</span>
+  </h2>
+  <ol class="mt-6 space-y-4">
+    {
+      work.map((item) => (
+        <li class="flex gap-4">
+          <div class="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md shadow-stone-800/5 ring-1 ring-stone-900/5 dark:border dark:border-stone-700/50 dark:bg-stone-800 dark:ring-0">
+            <img
+              src={item.logo}
+              width="32"
+              height="32"
+              decoding="async"
+              class="h-7 w-7"
+              loading="lazy"
+              style="color: transparent;"
+              alt={`${item.company} logo`}
+            />
+          </div>
+          <dl class="flex flex-auto flex-wrap gap-x-2">
+            <dt class="sr-only">Company</dt>
+            <dd class="w-full flex-none text-sm font-medium text-stone-900 dark:text-stone-100">
+              {item.company}
+            </dd>
+            <dt class="sr-only">Role</dt>
+            <dd class="text-[.8125rem] leading-6 text-stone-500 dark:text-zinc-400">
+              {item.role}
+            </dd>
+            <dt class="sr-only">Date</dt>
+            <dd
+              class="ml-auto text-[.8125rem] leading-6 text-stone-400 [font-feature-settings:'ss01','ss02'] dark:text-stone-500"
+              aria-label={roleTime(item.startYear, item.endYear)}
+            >
+              <time datetime={item.startYear.toString()}>{item.startYear}</time>
+              <span aria-hidden="true">&mdash;</span>
+              <time datetime={item.endYear.toString()}>
+                {isCurrentYear(item.endYear) ? "Present" : item.endYear}
+              </time>
+            </dd>
+          </dl>
+        </li>
+      ))
+    }
+  </ol>
+  <a
+    href="#"
+    class="inline-flex items-center gap-2 justify-center rounded-md py-2 px-3 text-sm outline-offset-2 transition active:transition-none bg-stone-50 font-medium text-stone-900 hover:bg-stone-100 active:bg-stone-100 active:text-stone-900/60 dark:bg-stone-800/50 dark:text-stone-300 dark:hover:bg-stone-800 dark:hover:text-stone-50 dark:active:bg-stone-800/50 dark:active:text-stone-50/70 group mt-6 w-full"
+  >
+    Download CV
+    <svg
+      viewBox="0 0 16 16"
+      fill="none"
+      aria-hidden="true"
+      class="h-4 w-4 stroke-zinc-400 transition group-active:stroke-zinc-600 dark:group-hover:stroke-zinc-50 dark:group-active:stroke-zinc-50"
+      ><path
+        d="M4.75 8.75 8 12.25m0 0 3.25-3.5M8 12.25v-8.5"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"></path>
+    </svg>
+  </a>
+</div>
