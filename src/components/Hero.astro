@@ -2,39 +2,30 @@
 import ButtonLink from "./ButtonLink.astro";
 ---
 
-<div class="sm:px-8 mt-9">
-  <div class="mx-auto max-w-7xl lg:px-8">
-    <div class="relative px-4 sm:px-8 lg:px-12">
-      <div class="mx-auto max-w-2xl lg:max-w-5xl">
-        <div class="max-w-2xl">
-          <h1
-            class="text-4xl bg-gradient-to-r from-rose-300 via-pink-500 to-rose-300 bg-clip-text animate-gradient-loop bg-[length:200%_auto] font-extrabold tracking-tight text-transparent sm:text-5xl stylistic-alternates"
-          >
-            Software Engineer, magician and photographer
-          </h1>
-          <p class="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-            I&apos;m Javier, a software engineer based in Santiago City.
-            I&apos;m currently developing cool stuff, doing magic, photography
-            and teaching at my Alma Mater about business process and Machine
-            Learning.
-          </p>
-          <div class="mt-6 flex gap-4">
-            <ButtonLink
-              href="mailto:test@test.false"
-              extraClasses="dark:highlight-white/20 bg-pink-500 text-pink-100 hover:bg-pink-400"
-            >
-              Get in touch
-            </ButtonLink>
-            <ButtonLink
-              variant="secondary"
-              href="mailto:test@test.false"
-              extraClasses="dark:highlight-white/5 bg-zinc-800 text-zinc-100 hover:bg-zinc-700"
-            >
-              My projects
-            </ButtonLink>
-          </div>
-        </div>
-      </div>
-    </div>
+<div class="max-w-2xl">
+  <h1
+    class="text-4xl bg-gradient-to-r from-rose-300 via-pink-500 to-rose-300 bg-clip-text animate-gradient-loop bg-[length:200%_auto] font-extrabold tracking-tight text-transparent sm:text-5xl stylistic-alternates"
+  >
+    Software Engineer, magician and photographer
+  </h1>
+  <p class="mt-6 text-base text-zinc-600 dark:text-zinc-400">
+    I&apos;m Javier, a software engineer based in Santiago City. I&apos;m
+    currently developing cool stuff, doing magic, photography and teaching at my
+    Alma Mater about business process and Machine Learning.
+  </p>
+  <div class="mt-6 flex gap-4">
+    <ButtonLink
+      href="mailto:test@test.false"
+      extraClasses="dark:highlight-white/20 bg-pink-500 text-pink-100 hover:bg-pink-400"
+    >
+      Get in touch
+    </ButtonLink>
+    <ButtonLink
+      variant="secondary"
+      href="mailto:test@test.false"
+      extraClasses="dark:highlight-white/5 bg-zinc-800 text-zinc-100 hover:bg-zinc-700"
+    >
+      My projects
+    </ButtonLink>
   </div>
 </div>

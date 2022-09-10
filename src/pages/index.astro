@@ -3,34 +3,11 @@ import "@/style/global.css";
 import Layout from "@/layouts/Layout.astro";
 import Hero from "@/components/Hero.astro";
 // import Techs from "@/components/Techs.astro";
-import Work from "@/components/Work.astro";
+import Resume from "@/components/Resume.astro";
 import ArticleLink from "@/components/ArticleLink.astro";
 import type { Article } from "@/components/ArticleLink.astro";
 import ProfilePicture from "@/components/ProfilePicture.astro";
-
-const work = [
-  {
-    company: "Developen Technology",
-    logo: "imgs/logo-dark.png",
-    role: "Software Engineer",
-    startYear: 2019,
-    endYear: 2022,
-  },
-  {
-    company: "Universidad de Santiago de Chile",
-    logo: "imgs/logo-usach.svg",
-    role: "Professor",
-    startYear: 2021,
-    endYear: 2022,
-  },
-  {
-    company: "IBM",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg",
-    role: "Intern",
-    startYear: 2019,
-    endYear: 2019,
-  },
-];
+import Container from "@/components/Container.astro";
 
 const articles = (await Astro.glob("./articles/*.{md,mdx}")).sort(
   (a, b) =>
@@ -40,7 +17,7 @@ const articles = (await Astro.glob("./articles/*.{md,mdx}")).sort(
 ---
 
 <Layout title="Javier Reyes">
-  <div class="sm:px-8 top-0 -mb-3 pt-3">
+  <!-- <div class="sm:px-8 top-0 -mb-3 pt-3">
     <div class="mx-auto max-w-7xl lg:px-8">
       <div class="relative px-4 sm:px-8 lg:px-12">
         <div class="mx-auto max-w-2xl lg:max-w-5xl">
@@ -49,33 +26,27 @@ const articles = (await Astro.glob("./articles/*.{md,mdx}")).sort(
       </div>
     </div>
   </div>
-  <main>
-    <!-- TODO: Change logo & and add a nice patter for the bg with blur effects -->
+  <div> -->
+  <Container class="mt-9">
     <Hero image="https://avatars.githubusercontent.com/u/4650238?v=4" />
+  </Container>
 
-    <div class="sm:px-8 mt-24 md:mt-28">
-      <div class="mx-auto max-w-7xl lg:px-8">
-        <div class="relative px-4 sm:px-8 lg:px-12">
-          <div class="mx-auto max-w-2xl lg:max-w-5xl">
-            <div
-              class="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2"
-            >
-              <div class="flex flex-col gap-16">
-                {
-                  articles.map((article) => (
-                    <ArticleLink article={article.frontmatter} />
-                  ))
-                }
-              </div>
-              <div class="space-y-10 lg:pl-16 xl:pl-24">
-                <Work work={work} />
-              </div>
-            </div>
-          </div>
-        </div>
+  <Container class="mt-24 md:mt-28">
+    <div
+      class="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2"
+    >
+      <div class="flex flex-col gap-16">
+        {
+          articles.map((article) => (
+            <ArticleLink article={article.frontmatter} />
+          ))
+        }
+      </div>
+      <div class="space-y-10 lg:pl-16 xl:pl-24">
+        <Resume />
       </div>
     </div>
+  </Container>
 
-    <!-- <Techs /> -->
-  </main>
+  <!-- <Techs /> -->
 </Layout>

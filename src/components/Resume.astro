@@ -1,31 +1,35 @@
 ---
-interface Work {
-  company: string;
-  logo: string;
-  role: string;
-  startYear: number;
-  endYear: number;
-}
+type date = { label: string; dateTime: number };
 
-export interface Props {
-  work: Work[];
-}
-
-const { work } = Astro.props as Props;
-
-function isCurrentYear(year: number) {
-  return year === new Date().getFullYear();
-}
-
-function roleTime(startYear: number, endYear: number) {
-  let end: string | number = endYear;
-
-  if (isCurrentYear(endYear)) {
-    end = "Present";
-  }
-
-  return `${startYear} until ${end}`;
-}
+const work = [
+  {
+    company: "Developen Technology",
+    title: "Software Engineer",
+    logo: "imgs/logo-dark.png",
+    start: "2019",
+    end: {
+      label: "Present",
+      dateTime: new Date().getFullYear(),
+    },
+  },
+  {
+    company: "Universidad de Santiago de Chile",
+    title: "Professor",
+    logo: "imgs/logo-usach.svg",
+    start: "2021",
+    end: {
+      label: "Present",
+      dateTime: new Date().getFullYear(),
+    },
+  },
+  {
+    company: "IBM",
+    title: "Intern",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg",
+    start: "2019",
+    end: "2019",
+  },
+];
 ---
 
 <div class="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
@@ -52,38 +56,42 @@ function roleTime(startYear: number, endYear: number) {
   </h2>
   <ol class="mt-6 space-y-4">
     {
-      work.map((item) => (
+      work.map((role) => (
         <li class="flex gap-4">
           <div class="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
             <img
-              src={item.logo}
+              src={role.logo}
               width="32"
               height="32"
               decoding="async"
               class="h-7 w-7"
               loading="lazy"
               style="color: transparent;"
-              alt={`${item.company} logo`}
+              alt={`${role.company} logo`}
             />
           </div>
           <dl class="flex flex-auto flex-wrap gap-x-2">
             <dt class="sr-only">Company</dt>
             <dd class="w-full flex-none text-sm font-medium text-zinc-900 dark:text-zinc-100">
-              {item.company}
+              {role.company}
             </dd>
             <dt class="sr-only">Role</dt>
             <dd class="text-[.8125rem] leading-6 text-zinc-500 dark:text-zinc-400">
-              {item.role}
+              {role.title}
             </dd>
             <dt class="sr-only">Date</dt>
             <dd
               class="ml-auto text-[.8125rem] leading-6 text-zinc-400 [font-feature-settings:'ss01','ss02'] dark:text-zinc-500"
-              aria-label={roleTime(item.startYear, item.endYear)}
+              aria-label={`${role.start} until ${
+                (role.end as date).label ?? role.end
+              }`}
             >
-              <time datetime={item.startYear.toString()}>{item.startYear}</time>
+              <time datetime={role.start}>{role.start}</time>
               <span aria-hidden="true">&mdash;</span>
-              <time datetime={item.endYear.toString()}>
-                {isCurrentYear(item.endYear) ? "Present" : item.endYear}
+              <time
+                datetime={(role.end as date).dateTime.toString() ?? role.end}
+              >
+                {(role.end as date).label ?? role.end}
               </time>
             </dd>
           </dl>
