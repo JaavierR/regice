@@ -89,7 +89,7 @@ const work = [
               <time datetime={role.start}>{role.start}</time>
               <span aria-hidden="true">&mdash;</span>
               <time
-                datetime={(role.end as date).dateTime.toString() ?? role.end}
+                datetime={(role.end as date).dateTime?.toString() ?? role.end}
               >
                 {(role.end as date).label ?? role.end}
               </time>
