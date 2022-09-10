@@ -2,11 +2,9 @@
 import "@/style/global.css";
 import Layout from "@/layouts/Layout.astro";
 import Hero from "@/components/Hero.astro";
-// import Techs from "@/components/Techs.astro";
 import Resume from "@/components/Resume.astro";
 import ArticleLink from "@/components/ArticleLink.astro";
 import type { Article } from "@/components/ArticleLink.astro";
-import ProfilePicture from "@/components/ProfilePicture.astro";
 import Container from "@/components/Container.astro";
 
 const articles = (await Astro.glob("./articles/*.{md,mdx}")).sort(
@@ -17,16 +15,6 @@ const articles = (await Astro.glob("./articles/*.{md,mdx}")).sort(
 ---
 
 <Layout title="Javier Reyes">
-  <!-- <div class="sm:px-8 top-0 -mb-3 pt-3">
-    <div class="mx-auto max-w-7xl lg:px-8">
-      <div class="relative px-4 sm:px-8 lg:px-12">
-        <div class="mx-auto max-w-2xl lg:max-w-5xl">
-          <ProfilePicture />
-        </div>
-      </div>
-    </div>
-  </div>
-  <div> -->
   <Container class="mt-9">
     <Hero image="https://avatars.githubusercontent.com/u/4650238?v=4" />
   </Container>
@@ -47,6 +35,4 @@ const articles = (await Astro.glob("./articles/*.{md,mdx}")).sort(
       </div>
     </div>
   </Container>
-
-  <!-- <Techs /> -->
 </Layout>
