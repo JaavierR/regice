@@ -5,6 +5,7 @@ import Hero from "@/components/Hero.astro";
 import Techs from "@/components/Techs.astro";
 import Work from "@/components/Work.astro";
 import ArticleLink from "@/components/ArticleLink.astro";
+import type { Article } from "@/components/ArticleLink.astro";
 
 const work = [
   {
@@ -30,35 +31,14 @@ const work = [
   },
 ];
 
-const articles = [
-  {
-    slug: "2021-08-01-why-i-chose-astro",
-    title: "How to create a custom React Hook",
-    description:
-      "In this article, we will learn how to create a custom React Hook to handle the state of a form.",
-    link: "blog/1",
-    date: "2021-03-01",
-  },
-  {
-    slug: "2021-08-01-why-i-chose-astro",
-    title: "How to create a custom React Hook",
-    description:
-      "In this article, we will learn how to create a custom React Hook to handle the state of a form.",
-    link: "blog/2",
-    date: "2021-03-01",
-  },
-  {
-    slug: "2021-08-01-why-i-chose-astro",
-    title: "How to create a custom React Hook",
-    description:
-      "In this article, we will learn how to create a custom React Hook to handle the state of a form.",
-    link: "blog/3",
-    date: "2021-03-01",
-  },
-];
+const articles = (await Astro.glob("./articles/*.{md,mdx}")).sort(
+  (a, b) =>
+    new Date(b.frontmatter.publishDate).valueOf() -
+    new Date(a.frontmatter.publishDate).valueOf()
+) as { frontmatter: Article }[];
 ---
 
-<Layout title="Home">
+<Layout title="Javier Reyes">
   <main>
     <!-- TODO: Change logo & and add a nice patter for the bg with blur effects -->
     <Hero image="https://avatars.githubusercontent.com/u/4650238?v=4" />
@@ -68,7 +48,11 @@ const articles = [
           class="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2"
         >
           <div class="flex flex-col gap-16">
-            {articles.map((article) => <ArticleLink article={article} />)}
+            {
+              articles.map((article) => (
+                <ArticleLink article={article.frontmatter} />
+              ))
+            }
           </div>
           <div class="space-y-10 lg:pl-16 xl:pl-24">
             <Work work={work} />
@@ -77,9 +61,5 @@ const articles = [
       </div>
     </div>
     <Techs />
-    <!-- TODO: About section -->
-    <!-- Education, Work experience, some hobbies related to me -->
-    <!-- TODO: Projects section -->
-    <!-- TODO: Get in touch -->
   </main>
 </Layout>
