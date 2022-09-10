@@ -11,16 +11,30 @@ const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.slice(1);
 ---
 
-<header
-  id="header"
-  class="top-0 z-10 h-16 py-3 fixed w-full bg-white/50 dark:bg-zinc-800/50 backdrop-blur"
->
+<header id="header" class="top-0 z-50 h-16 py-3 fixed w-full">
   <div class="sm:px-8">
     <div class="mx-auto max-w-7xl lg:px-8">
       <div class="relative px-4 sm:px-8 lg:px-12">
         <div class="mx-auto mx-w-2xl lg:max-w-5xl">
           <div class="relative flex gap-4 items-center">
-            <div class="flex flex-1"></div>
+            <div class="flex flex-1">
+              {
+                currentPath !== "" && (
+                  <div class="dark:rinf-white/10 h-10 w-10 rounded-full bg-white/90 p-0.5 shadow-lg shadow-zinc-900/5 backdrop-blur dark:bg-zinc-800/90">
+                    <a href="/" aria-label="Home" class="pointer-events-auto">
+                      <img
+                        src="imgs/me.png"
+                        width="512"
+                        height="512"
+                        decoding="async"
+                        sizes="4rem"
+                        class="h-9 w-9 rounded-full bg-zinc-100 object-cover dark:bg-zinc-800"
+                      />
+                    </a>
+                  </div>
+                )
+              }
+            </div>
             <div class="flex flex-1 justify-end md:justify-center">
               <nav class="pointer-events-auto hidden md:block">
                 <ul
@@ -66,26 +80,28 @@ const currentPath = pathname.slice(1);
   </div>
 </header>
 
-<!-- <script>
+<script>
   function onScroll() {
     const header = document.querySelector("#header") as Element;
     const scroll = window.scrollY;
     if (scroll > 0) {
       header.classList.add(
         "dark:bg-zinc-900/95",
-        "dark:backdrop-blur",
-        "dark:[@supports(backdrop-filter:blur(0))]:bg-zinc-900/75"
+        "backdrop-blur",
+        "dark:[@supports(backdrop-filter:blur(0))]:bg-zinc-900/50",
+        "[@supports(backdrop-filter:blur(0))]:bg-white/50"
       );
       header.classList.remove("dark:bg-transparent");
     } else {
       header.classList.remove(
         "dark:bg-zinc-900/95",
-        "dark:backdrop-blur",
-        "dark:[@supports(backdrop-filter:blur(0))]:bg-zinc-900/75"
+        "backdrop-blur",
+        "dark:[@supports(backdrop-filter:blur(0))]:bg-zinc-900/50",
+        "[@supports(backdrop-filter:blur(0))]:bg-white/50"
       );
       header.classList.add("dark:bg-transparent");
     }
   }
 
   window.addEventListener("scroll", onScroll);
-</script> -->
+</script>
