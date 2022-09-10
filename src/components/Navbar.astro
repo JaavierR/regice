@@ -1,56 +1,91 @@
 ---
-import GithubIcon from "./GithubIcon.astro";
 import { ThemeToggle } from "./ThemeToggle";
+
+const routes = [
+  { path: "/about", name: "about" },
+  { path: "/articles", name: "articles" },
+  { path: "/projects", name: "projects" },
+];
+
+const pathname = new URL(Astro.request.url).pathname;
+const currentPath = pathname.slice(1);
 ---
 
 <header
   id="header"
-  class="sticky top-0 z-50 bg-white py-5 shadow-md shadow-slate-900/5 transition duration-500 dark:shadow-none dark:bg-transparent"
+  class="top-0 z-10 h-16 py-3 fixed w-full bg-white/50 dark:bg-zinc-800/50 backdrop-blur"
 >
-  <div
-    class="flex flex-wrap w-full items-center max-w-2xl lg:max-w-7xl mx-auto justify-between px-4 lg:px-8 xl:px-12"
-  >
-    <div class="relative flex flex-grow basis-0 items-center">
-      <a href="/" aria-label="Home page" class="font-bold font-mono text-xl"
-        >&lt;JR&semi;&gt;</a
-      >
-    </div>
-
-    <div class="relative flex basis-0 justify-end gap-6 sm:gap-8 md:flex-grow">
-      <ThemeToggle client:load />
-      <a
-        href="http://github.com/JaavierR/regice"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <GithubIcon
-          class="h-6 w-6 fill-slate-400 hover:fill-slate-500 dark:hover:fill-slate-300"
-        />
-      </a>
+  <div class="sm:px-8">
+    <div class="mx-auto max-w-7xl lg:px-8">
+      <div class="relative px-4 sm:px-8 lg:px-12">
+        <div class="mx-auto mx-w-2xl lg:max-w-5xl">
+          <div class="relative flex gap-4 items-center">
+            <div class="flex flex-1"></div>
+            <div class="flex flex-1 justify-end md:justify-center">
+              <nav class="pointer-events-auto hidden md:block">
+                <ul
+                  class="flex px-3 text-sm font-medium text-zinc-800 dark:text-zinc-200"
+                >
+                  {
+                    routes.map((route) => (
+                      <li>
+                        <a
+                          href={route.path}
+                          class:list={[
+                            "relative block px-3 py-2 capitalize",
+                            {
+                              "hover:text-pink-500 dark:hover:text-pink-400 transition":
+                                route.name !== currentPath,
+                            },
+                            {
+                              "text-pink-500 dark:text-pink-400":
+                                route.name === currentPath,
+                            },
+                          ]}
+                        >
+                          {route.name}
+                          {route.name === currentPath && (
+                            <span class="absolute inset-x-1 -bottom-px h-px bg-gradient-to-r from-pink-500/0 via-pink-500/40 to-pink-500/0 dark:from-pink-400/0 dark:via-pink-400/40 dark:to-pink-400/0" />
+                          )}
+                        </a>
+                      </li>
+                    ))
+                  }
+                </ul>
+              </nav>
+            </div>
+            <div
+              class="relative flex basis-0 justify-end gap-6 sm:gap-8 md:flex-grow"
+            >
+              <ThemeToggle client:load />
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </header>
 
-<script>
+<!-- <script>
   function onScroll() {
     const header = document.querySelector("#header") as Element;
     const scroll = window.scrollY;
     if (scroll > 0) {
       header.classList.add(
-        "dark:bg-slate-900/95",
+        "dark:bg-zinc-900/95",
         "dark:backdrop-blur",
-        "dark:[@supports(backdrop-filter:blur(0))]:bg-slate-900/75"
+        "dark:[@supports(backdrop-filter:blur(0))]:bg-zinc-900/75"
       );
       header.classList.remove("dark:bg-transparent");
     } else {
       header.classList.remove(
-        "dark:bg-slate-900/95",
+        "dark:bg-zinc-900/95",
         "dark:backdrop-blur",
-        "dark:[@supports(backdrop-filter:blur(0))]:bg-slate-900/75"
+        "dark:[@supports(backdrop-filter:blur(0))]:bg-zinc-900/75"
       );
       header.classList.add("dark:bg-transparent");
     }
   }
 
   window.addEventListener("scroll", onScroll);
-</script>
+</script> -->
