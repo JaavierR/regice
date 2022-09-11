@@ -2,12 +2,13 @@
 import Avatar from "./Avatar.astro";
 import AvatarContainer from "./AvatarContainer.astro";
 import Container from "./Container.astro";
+import DesktopNavigation from "./DesktopNavigation.astro";
 import { ThemeToggle } from "./ThemeToggle";
 
 const routes = [
-  { path: "/about", name: "about" },
-  { path: "/articles", name: "articles" },
-  { path: "/projects", name: "projects" },
+  { path: "/about", name: "About" },
+  { path: "/articles", name: "Articles" },
+  { path: "/projects", name: "Projects" },
 ];
 
 const pathname = new URL(Astro.request.url).pathname;
@@ -68,7 +69,10 @@ const isHomePage = currentPath === "";
           }
         </div>
         <div class="flex flex-1 justify-end md:justify-center">
-          <!-- Mobile views -->
+          <DesktopNavigation
+            routes={routes}
+            class="pointer-events-auto hidden md:block"
+          />
         </div>
         <div class="flex justify-end md:flex-1">
           <div class="pointer-events-auto">
