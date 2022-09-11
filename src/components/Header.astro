@@ -10,6 +10,8 @@ const routes = [
   { path: "/articles", name: "Articles" },
   { path: "/projects", name: "Projects" },
 ];
+
+const isNotHome = new URL(Astro.request.url).pathname.slice(1);
 ---
 
 <header
@@ -24,9 +26,13 @@ const routes = [
     <Container class="top-[var(--header-top,theme(spacing.6))] w-full">
       <div class="relative flex gap-4 items-center">
         <div class="flex flex-1">
-          <AvatarContainer>
-            <Avatar />
-          </AvatarContainer>
+          {
+            isNotHome && (
+              <AvatarContainer>
+                <Avatar />
+              </AvatarContainer>
+            )
+          }
         </div>
         <div class="flex flex-1 justify-center">
           <DesktopNavigation routes={routes} class="pointer-events-auto" />
