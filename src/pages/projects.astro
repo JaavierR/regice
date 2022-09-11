@@ -55,7 +55,13 @@ const projects = [
             <img src={project.logo} alt="" class="h-8 w-8" />
           </div>
           <h2 class="mt-6 text-base font-semibold text-zinc-800 dark:text-zinc-100">
-            <CardLink href={project.link.href}>{project.name}</CardLink>
+            <CardLink
+              href={project.link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {project.name}
+            </CardLink>
           </h2>
           <CardDescription>{project.description}</CardDescription>
           <div class="z-10 mt-4">
