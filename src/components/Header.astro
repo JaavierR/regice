@@ -82,30 +82,28 @@ const isHomePage = currentPath === "";
 
 {isHomePage && <div style="height: var(--content-offset)" />}
 
-<script>
-  const $ = (el: string) => document.querySelector(el);
-  let downDelay = ($("#avatar") as HTMLDivElement).offsetTop ?? 0;
+<script is:inline>
+  const $ = (el) => document.querySelector(el);
+  let downDelay = $("#avatar").offsetTop ?? 0;
   let isInitial = true;
   let upDelay = 64;
 
-  function setProperty(property: string, value: string) {
+  function setProperty(property, value) {
     document.documentElement.style.setProperty(property, value);
   }
 
-  function removeProperty(property: string) {
+  function removeProperty(property) {
     document.documentElement.style.removeProperty(property);
   }
 
-  function clamp(number: number, a: number, b: number) {
+  function clamp(number, a, b) {
     let min = Math.min(a, b);
     let max = Math.max(a, b);
     return Math.min(Math.max(number, min), max);
   }
 
   function updateHeaderStyles() {
-    let { top, height } = (
-      $("#header") as HTMLHeadingElement
-    ).getBoundingClientRect();
+    let { top, height } = $("#header").getBoundingClientRect();
     let scrollY = clamp(
       window.scrollY,
       0,
