@@ -12,10 +12,18 @@ export interface Props {
 const { routes } = Astro.props as Props;
 ---
 
-<nav class={Astro.props.class}>
-  <ul
-    class="flex rounded-full bg-white/50 px-3 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/50 dark:text-zinc-200 dark:ring-white/10"
-  >
-    {routes.map((route) => <NavItem href={route.path}>{route.name}</NavItem>)}
-  </ul>
-</nav>
+<>
+  <nav class={Astro.props.class}>
+    <ul
+      class="flex rounded-full bg-white/50 px-3 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/50 dark:text-zinc-200 dark:ring-white/10"
+    >
+      {
+        routes.map((route) => (
+          <>
+            <NavItem href={route.path}>{route.name}</NavItem>
+          </>
+        ))
+      }
+    </ul>
+  </nav>
+</>
