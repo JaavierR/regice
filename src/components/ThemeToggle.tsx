@@ -127,7 +127,7 @@ export function ThemeToggle({ panelClassName = "mt-4" }) {
       <Listbox.Label className="sr-only">Theme</Listbox.Label>
       <Listbox.Button
         type="button"
-        className="flex h-6 w-6 items-center justify-center rounded-lg shadow-md shadow-black/5 ring-1 ring-black/5 dark:bg-zinc-700 dark:ring-inset dark:ring-white/5"
+        className="flex h-6 w-6 items-center justify-center rounded-lg bg-white shadow-md shadow-black/5 ring-1 ring-black/5 dark:bg-zinc-800 dark:ring-inset dark:ring-white/5"
       >
         <span className="dark:hidden">
           <SunIcon className="h-5 w-5" selected={selectedTheme !== "system"} />
