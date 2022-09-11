@@ -3,6 +3,8 @@ import Card from "@/components/Card.astro";
 import CardDescription from "@/components/CardDescription.astro";
 import CardLink from "@/components/CardLink.astro";
 import SimpleLayout from "@/layouts/SimpleLayout.astro";
+import LaravelIcon from "@/components/icons/LaravelIcon.astro";
+import VueIcon from "@/components/icons/VueIcon.astro";
 
 const projects = [
   {
@@ -13,7 +15,8 @@ const projects = [
       href: "https://www.goldengamers.cl/",
       label: "goldengamers.cl",
     },
-    logo: "imgs/me.png",
+    logo: "imgs/logos/goldengamers.png",
+    icons: [LaravelIcon, VueIcon],
   },
   {
     name: "Pokedex",
@@ -23,7 +26,8 @@ const projects = [
       href: "https://metang.vercel.app/",
       label: "metang.vercel.app",
     },
-    logo: "imgs/me.png",
+    logo: "imgs/logos/pokedex.png",
+    icons: [LaravelIcon],
   },
 ];
 ---
@@ -53,6 +57,16 @@ const projects = [
             <CardLink href={project.link.href}>{project.name}</CardLink>
           </h2>
           <CardDescription>{project.description}</CardDescription>
+          <div class="z-10 mt-4">
+            <div class="mb-2 -ml-0.5 text-xs font-light text-zinc-500 dark:text-zinc-400">
+              Made with:
+            </div>
+            <div class="flex space-x-4">
+              {project.icons.map((Icon) => (
+                <Icon class="h-5 w-5 flex-none fill-current text-zinc-500 dark:text-zinc-400" />
+              ))}
+            </div>
+          </div>
           <p class="relative z-10 mt-6 flex text-sm font-medium text-zinc-400 transition group-hover:text-pink-500 dark:text-zinc-200 dark:group-hover:text-pink-400">
             <svg
               viewBox="0 0 24 24"
