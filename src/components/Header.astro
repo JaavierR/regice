@@ -17,7 +17,7 @@ const isHomePage = currentPath === "";
 ---
 
 <header
-  class="pointer-events-none z-50 flex flex-col"
+  class="relative pointer-events-none z-50 flex flex-col"
   style="height: var(--header-height); margin-bottom: var(--header-mb)"
 >
   {
@@ -85,7 +85,7 @@ const isHomePage = currentPath === "";
 <script is:inline>
   const $ = (el) => document.querySelector(el);
 
-  let downDelay = $("#avatar").offsetTop ?? 0;
+  let downDelay = $("#avatar")?.offsetTop ?? 0;
   let isInitial = true;
   let upDelay = 64;
 
@@ -140,7 +140,8 @@ const isHomePage = currentPath === "";
   }
 
   function updateAvatarStyles() {
-    if (!true) {
+    const isNotHome = window.location.pathname.slice(1);
+    if (isNotHome) {
       return;
     }
 
