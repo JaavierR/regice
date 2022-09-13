@@ -7,6 +7,7 @@ import Stack from "@/components/Stack.astro";
 import ArticleLink from "@/components/ArticleLink.astro";
 import type { Article } from "@/components/ArticleLink.astro";
 import Container from "@/components/Container.astro";
+import { Image } from "@astrojs/image/components";
 
 const articles = (await Astro.glob("./articles/*.{md,mdx}")).sort(
   (a, b) =>
@@ -30,10 +31,14 @@ const articles = (await Astro.glob("./articles/*.{md,mdx}")).sort(
     <div
       class="h-[8.25rem] w-[8.25rem] rounded-full bg-white/90 p-0.5 shadow-lg shadow-zinc-800/10 ring-1 ring-zinc-900/10 backdrop-blur dark:bg-zinc-800/90 dark:ring-white/10 mb-6"
     >
-      <img
+      <Image
         src="imgs/me.png"
         alt=""
         class="rounded-full bg-zinc-100 object-cover dark:bg-zinc-800 h-32 w-32"
+        width="128"
+        height="128"
+        format="webp"
+        quality="100"
       />
     </div>
     <Hero image="https://avatars.githubusercontent.com/u/4650238?v=4" />
