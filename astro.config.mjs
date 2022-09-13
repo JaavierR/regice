@@ -4,6 +4,7 @@ import vercel from "@astrojs/vercel/serverless";
 import mdx from "@astrojs/mdx";
 import remarkGfm from "remark-gfm";
 import rehypePrism from "@mapbox/rehype-prism";
+import image from "@astrojs/image";
 
 // https://astro.build/config
 export default defineConfig({
@@ -14,6 +15,7 @@ export default defineConfig({
   },
   integrations: [
     react(),
+    image(),
     mdx({
       remarkPlugins: [remarkGfm],
       rehypePlugins: [rehypePrism],
