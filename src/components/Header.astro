@@ -3,6 +3,7 @@ import Avatar from "./Avatar.astro";
 import AvatarContainer from "./AvatarContainer.astro";
 import Container from "./Container.astro";
 import DesktopNavigation from "./DesktopNavigation.astro";
+import MobileNavigation from "./MobileNavigation";
 import { ThemeToggle } from "./ThemeToggle";
 
 const routes = [
@@ -67,10 +68,17 @@ const isHomePage = currentPath === "";
             )
           }
         </div>
-        <div class="flex flex-1 justify-center">
-          <DesktopNavigation routes={routes} class="pointer-events-auto" />
+        <div class="flex flex-1 justify-end md:justify-center">
+          <MobileNavigation
+            className="pointer-events-auto md:hidden"
+            client:visible
+          />
+          <DesktopNavigation
+            routes={routes}
+            class="pointer-events-auto hidden md:block"
+          />
         </div>
-        <div class="flex justify-end flex-1">
+        <div class="flex justify-end md:flex-1">
           <div class="pointer-events-auto">
             <ThemeToggle client:load />
           </div>
