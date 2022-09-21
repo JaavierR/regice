@@ -1,0 +1,49 @@
+---
+import IconTech from "./IconTech.astro";
+
+const techs = [
+  "typescript",
+  "react.js",
+  "next.js",
+  "vue.js",
+  "nuxt.js",
+  "tailwind css",
+  "laravel",
+  "MySQL",
+  "PostgreSQL",
+  "Python",
+];
+---
+
+<div class="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
+  <h2 class="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="1.5"
+      stroke="currentColor"
+      class="w-6 h-6 flex-none"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M4.098 19.902a3.75 3.75 0 005.304 0l6.401-6.402M6.75 21A3.75 3.75 0 013 17.25V4.125C3 3.504 3.504 3 4.125 3h5.25c.621 0 1.125.504 1.125 1.125v4.072M6.75 21a3.75 3.75 0 003.75-3.75V8.197M6.75 21h13.125c.621 0 1.125-.504 1.125-1.125v-5.25c0-.621-.504-1.125-1.125-1.125h-4.072M10.5 8.197l2.88-2.88c.438-.439 1.15-.439 1.59 0l3.712 3.713c.44.44.44 1.152 0 1.59l-2.879 2.88M6.75 17.25h.008v.008H6.75v-.008z"
+        class="stroke-zinc-400 dark:stroke-zinc-500 fill-zinc-100 dark:fill-zinc-100/10"
+      ></path>
+    </svg>
+    <span class="ml-3">My stack</span>
+  </h2>
+  <ul class="mt-6 grid grid-cols-5 gap-4">
+    {
+      techs.map((tech) => (
+        <li title={tech}>
+          <span class="sr-only">{tech}</span>
+          <div class="relative mt-1 flex h-10 w-10 flex-none items-center justify-center overflow-hidden rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
+            <IconTech brand={tech} />
+          </div>
+        </li>
+      ))
+    }
+  </ul>
+</div>

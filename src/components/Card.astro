@@ -1,19 +1,13 @@
 ---
-import IconTech from "./IconTech.astro";
-
 export interface Props {
-  brand: string;
+  as: string;
 }
 
-const { brand } = Astro.props as Props;
+const { as: Component = "div" } = Astro.props as Props;
 ---
 
-<li
-  class="after:content-[attr(data-tooltip)] relative after:absolute after:bottom-full after:text-white after:rounded after:bg-slate-800 after:backdrop-blur-sm after:text-sm after:block after:max-w-lg after:left-1/2 after:-translate-x-1/2 after:translate-y-4 shrink-0 w-10 h-10 items-center justify-center block mx-auto after:overflow-hidden after:px-2 after:py-1 after:text-ellipsis after:pointer-events-none after:whitespace-nowrap after:transition-all after:duration-200 after:ease-in-out after:opacity-0 after:focus:opacity-100 after:hover:opacity-100 after:hover:-translate-x-1/2 after:hover:-translate-y-4 after:focus:-translate-x-1/2 after:focus:-translate-y-4"
-  data-tooltip={brand}
+<Component
+  class:list={[Astro.props.class, "group relative flex flex-col items-start"]}
 >
-  <IconTech brand={brand} />
-  <span class="sr-only">
-    {brand}
-  </span>
-</li>
+  <slot />
+</Component>

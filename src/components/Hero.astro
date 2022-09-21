@@ -1,71 +1,32 @@
 ---
 import ButtonLink from "./ButtonLink.astro";
-
-export interface Props {
-  image?: string | null;
-}
-
-const { image } = Astro.props as Props;
 ---
 
-<div
-  class="overflow-hidden bg-slate-900 dark:-mb-32 dark:mt-[-4.5rem] dark:pb-32 dark:pt-[4.5rem] dark:lg:mt-[-4.75rem] dark:lg:pt-[4.75rem]"
->
-  <div class="py-16 sm:px-2 lg:relative lg:py-20 lg:px-0 stylistic-alternates">
-    <div
-      class="mx-auto grid max-w-2xl grid-cols-1 items-center gap-y-16 gap-x-8 px-4 lg:max-w-7xl lg:grid-cols-2 lg:px-8 xl:gap-x-16 xl:px-12"
+<div class="max-w-2xl">
+  <h1
+    class="text-4xl bg-gradient-to-r from-rose-300 via-pink-500 to-rose-300 bg-clip-text animate-gradient-loop bg-[length:200%_auto] font-extrabold tracking-tight text-transparent sm:text-5xl stylistic-alternates"
+  >
+    Software Engineer, magician and photographer
+  </h1>
+  <p class="mt-6 text-base text-zinc-600 dark:text-zinc-400">
+    I&apos;m Javier, a software engineer based in Santiago City. I&apos;m
+    currently developing cool stuff, doing magic, sometimes photography and
+    recently I start teaching at my Alma Mater about business process and Data
+    Science.
+  </p>
+  <div class="mt-6 flex gap-4">
+    <ButtonLink
+      href="mailto:test@test.false"
+      extraClasses="dark:highlight-white/20 bg-pink-600 text-white hover:bg-pink-400"
     >
-      <div class="relative z-10 md:text-center lg:text-left">
-        <div class="relative">
-          <h2
-            class="inline bg-gradient-to-r from-indigo-200 via-sky-400 to-indigo-200 bg-clip-text text-5xl font-display tracking-tight text-transparent animate-gradient-loop bg-[length:200%_auto]"
-          >
-            Software Engineer &amp; <br /> ML enthusiast.
-          </h2>
-          <p class="text-xl mt-3 tracking-tight text-slate-400">
-            Hi, my name is Javier. I like to build cool looking stuff, code,
-            magic and photography. I'm also teaching at my Alma Mater.
-          </p>
-          <div class="mt-8 flex gap-4 md:justify-center lg:justify-start">
-            <ButtonLink
-              href="mailto:example@example.falso"
-              extraClasses="highlight-white/5"
-              >Get in touch
-            </ButtonLink>
-            <ButtonLink
-              variant="secondary"
-              href="/"
-              extraClasses="highlight-white/5"
-              >My projects
-            </ButtonLink>
-          </div>
-        </div>
-      </div>
-      <div class="relative lg:static xl:pl-10">
-        <div class="relative w-fit mx-auto">
-          <div
-            class="absolute inset-0 rounded-full bg-gradient-to-tr from-sky-300 via-sky-300/70 to-blue-300 opacity-10 blur-lg"
-          >
-          </div>
-          <div
-            class="absolute inset-0 rounded-full bg-gradient-to-tr from-sky-300 via-sky-300/70 to-blue-300 opacity-10"
-          >
-          </div>
-          {
-            image ? (
-              <div class="mx-auto w-fit rounded-full bg-slate-800/10 ring-1 ring-white/20 backdrop-blur">
-                <img
-                  src={image}
-                  alt="Javier profile picture github"
-                  class="mx-auto h-56 w-56 rounded-full"
-                />
-              </div>
-            ) : (
-              <div class="mx-auto block h-56 w-56 animate-pulse rounded-full bg-slate-700/30 bg-no-repeat" />
-            )
-          }
-        </div>
-      </div>
-    </div>
+      Get in touch
+    </ButtonLink>
+    <ButtonLink
+      variant="secondary"
+      href="/projects"
+      extraClasses="dark:highlight-white/5 bg-zinc-800 text-zinc-100 hover:bg-zinc-700"
+    >
+      My projects
+    </ButtonLink>
   </div>
 </div>

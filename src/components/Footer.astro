@@ -1,0 +1,40 @@
+---
+import InnerContainer from "./InnerContainer.astro";
+import OuterContainer from "./OuterContainer.astro";
+
+const routes = [
+  { path: "/about", name: "about" },
+  { path: "/articles", name: "articles" },
+  { path: "/projects", name: "projects" },
+];
+---
+
+<footer class="mt-32">
+  <OuterContainer>
+    <div class="border-t border-zinc-100 pt-10 pb-16 dark:border-zinc-700/40">
+      <InnerContainer>
+        <div
+          class="flex flex-col items-center justify-between gap-6 sm:flex-row"
+        >
+          <div
+            class="flex gap-6 text-sm font-medium text-zinc-800 dark:text-zinc-200"
+          >
+            {
+              routes.map((route) => (
+                <a
+                  href={route.path}
+                  class="capitalize transition hover:text-pink-500 dark:hover:text-pink-400"
+                >
+                  {route.name}
+                </a>
+              ))
+            }
+          </div>
+          <p class="text-xs text-zinc-400 dark:text-zinc-500">
+            &copy; {new Date().getFullYear()} Javier Reyes. All rights reserved.
+          </p>
+        </div>
+      </InnerContainer>
+    </div>
+  </OuterContainer>
+</footer>

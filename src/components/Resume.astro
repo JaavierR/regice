@@ -1,0 +1,102 @@
+---
+type date = { label: string; dateTime: number };
+
+const work = [
+  {
+    company: "Developen Technology",
+    title: "Software Engineer",
+    logo: "imgs/logo-dark.png",
+    start: "2019",
+    end: {
+      label: "Present",
+      dateTime: new Date().getFullYear(),
+    },
+  },
+  {
+    company: "Universidad de Santiago de Chile",
+    title: "Professor",
+    logo: "imgs/logo-usach.svg",
+    start: "2021",
+    end: {
+      label: "Present",
+      dateTime: new Date().getFullYear(),
+    },
+  },
+  {
+    company: "IBM",
+    title: "Intern",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg",
+    start: "2019",
+    end: "2019",
+  },
+];
+---
+
+<div class="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
+  <h2 class="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      class="w-6 h-6 flex-none"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M7.5 5.25a3 3 0 013-3h3a3 3 0 013 3v.205c.933.085 1.857.197 2.774.334 1.454.218 2.476 1.483 2.476 2.917v3.033c0 1.211-.734 2.352-1.936 2.752A24.726 24.726 0 0112 15.75c-2.73 0-5.357-.442-7.814-1.259-1.202-.4-1.936-1.541-1.936-2.752V8.706c0-1.434 1.022-2.7 2.476-2.917A48.814 48.814 0 017.5 5.455V5.25zm7.5 0v.09a49.488 49.488 0 00-6 0v-.09a1.5 1.5 0 011.5-1.5h3a1.5 1.5 0 011.5 1.5zm-3 8.25a.75.75 0 100-1.5.75.75 0 000 1.5z"
+        clip-rule="evenodd"
+        class="stroke-zinc-400 dark:stroke-zinc-500 fill-zinc-100 dark:fill-zinc-100/10"
+      ></path>
+      <path
+        d="M3 18.4v-2.796a4.3 4.3 0 00.713.31A26.226 26.226 0 0012 17.25c2.892 0 5.68-.468 8.287-1.335.252-.084.49-.189.713-.311V18.4c0 1.452-1.047 2.728-2.523 2.923-2.12.282-4.282.427-6.477.427a49.19 49.19 0 01-6.477-.427C4.047 21.128 3 19.852 3 18.4z"
+        class="stroke-zinc-400 dark:stroke-zinc-500 fill-zinc-100 dark:fill-zinc-100/10"
+      ></path>
+    </svg>
+
+    <span class="ml-3">Work</span>
+  </h2>
+  <ol class="mt-6 space-y-4">
+    {
+      work.map((role) => (
+        <li class="flex gap-4">
+          <div class="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
+            <img
+              src={role.logo}
+              width="32"
+              height="32"
+              decoding="async"
+              class="h-7 w-7"
+              loading="lazy"
+              style="color: transparent;"
+              alt={`${role.company} logo`}
+            />
+          </div>
+          <dl class="flex flex-auto flex-wrap gap-x-2">
+            <dt class="sr-only">Company</dt>
+            <dd class="w-full flex-none text-sm font-medium text-zinc-900 dark:text-zinc-100">
+              {role.company}
+            </dd>
+            <dt class="sr-only">Role</dt>
+            <dd class="text-[.8125rem] leading-6 text-zinc-500 dark:text-zinc-400">
+              {role.title}
+            </dd>
+            <dt class="sr-only">Date</dt>
+            <dd
+              class="ml-auto text-[.8125rem] leading-6 text-zinc-500 [font-feature-settings:'ss01','ss02'] dark:text-zinc-400"
+              aria-label={`${role.start} until ${
+                (role.end as date).label ?? role.end
+              }`}
+            >
+              <time datetime={role.start}>{role.start}</time>
+              <span aria-hidden="true">&mdash;</span>
+              <time
+                datetime={(role.end as date).dateTime?.toString() ?? role.end}
+              >
+                {(role.end as date).label ?? role.end}
+              </time>
+            </dd>
+          </dl>
+        </li>
+      ))
+    }
+  </ol>
+</div>

@@ -2,84 +2,49 @@
 import "@/style/global.css";
 import Layout from "@/layouts/Layout.astro";
 import Hero from "@/components/Hero.astro";
-import Techs from "@/components/Techs.astro";
-import Work from "@/components/Work.astro";
+import Resume from "@/components/Resume.astro";
+import Stack from "@/components/Stack.astro";
 import ArticleLink from "@/components/ArticleLink.astro";
+import type { Article } from "@/components/ArticleLink.astro";
+import Container from "@/components/Container.astro";
 
-const work = [
-  {
-    company: "Developen Technology",
-    logo: "imgs/logo-dark.png",
-    role: "Software Engineer",
-    startYear: 2019,
-    endYear: 2022,
-  },
-  {
-    company: "Universidad de Santiago de Chile",
-    logo: "imgs/logo-usach.svg",
-    role: "Professor",
-    startYear: 2021,
-    endYear: 2022,
-  },
-  {
-    company: "IBM",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg",
-    role: "Intern",
-    startYear: 2019,
-    endYear: 2019,
-  },
-];
-
-const articles = [
-  {
-    slug: "2021-08-01-why-i-chose-astro",
-    title: "How to create a custom React Hook",
-    description:
-      "In this article, we will learn how to create a custom React Hook to handle the state of a form.",
-    link: "blog/1",
-    date: "2021-03-01",
-  },
-  {
-    slug: "2021-08-01-why-i-chose-astro",
-    title: "How to create a custom React Hook",
-    description:
-      "In this article, we will learn how to create a custom React Hook to handle the state of a form.",
-    link: "blog/2",
-    date: "2021-03-01",
-  },
-  {
-    slug: "2021-08-01-why-i-chose-astro",
-    title: "How to create a custom React Hook",
-    description:
-      "In this article, we will learn how to create a custom React Hook to handle the state of a form.",
-    link: "blog/3",
-    date: "2021-03-01",
-  },
-];
+const articles = (await Astro.glob("./articles/*.{md,mdx}")).sort(
+  (a, b) =>
+    new Date(b.frontmatter.publishDate).valueOf() -
+    new Date(a.frontmatter.publishDate).valueOf()
+) as { frontmatter: Article }[];
 ---
 
-<Layout title="Home">
-  <main>
-    <!-- TODO: Change logo & and add a nice patter for the bg with blur effects -->
+<head>
+  <title>Javier Reyes - Software engineer, magician and photographer</title>
+  <meta
+    name="description"
+    content="I'm Javier, a software engineer based in Santiago City. I'm
+    currently developing cool stuff, doing magic, sometimes photography and
+    recently I start teaching at my Alma Mater about business process and Data
+    Science."
+  />
+</head>
+<Layout>
+  <Container class="mt-9">
     <Hero image="https://avatars.githubusercontent.com/u/4650238?v=4" />
-    <div class="px-4 sm:px-8 mt-24 md:mt-28">
-      <div class="max-w-2xl lg:max-w-5xl mx-auto">
-        <div
-          class="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2"
-        >
-          <div class="flex flex-col gap-16">
-            {articles.map((article) => <ArticleLink article={article} />)}
-          </div>
-          <div class="space-y-10 lg:pl-16 xl:pl-24">
-            <Work work={work} />
-          </div>
-        </div>
+  </Container>
+
+  <Container class="mt-24 md:mt-28">
+    <div
+      class="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2"
+    >
+      <div class="flex flex-col gap-16">
+        {
+          articles.map((article) => (
+            <ArticleLink article={article.frontmatter} />
+          ))
+        }
+      </div>
+      <div class="space-y-10 lg:pl-16 xl:pl-24">
+        <Resume />
+        <Stack />
       </div>
     </div>
-    <Techs />
-    <!-- TODO: About section -->
-    <!-- Education, Work experience, some hobbies related to me -->
-    <!-- TODO: Projects section -->
-    <!-- TODO: Get in touch -->
-  </main>
+  </Container>
 </Layout>
