@@ -12,10 +12,10 @@ let indicators = {
 };
 
 function FeeSlip() {
-  const [amount, setAmount] = useState({ original: 0, mask: "$0" });
-  const [indicator, setIndicator] = useState<keyof typeof indicators>("usd");
+  const [amount, setAmount] = useState({ original: 0, mask: "0" });
+  const [indicator, setIndicator] = useState<keyof typeof indicators>("clp");
 
-  const handleAmountChange = (e: ChangeEvent<HTMLInputElement>) => {
+  function handleAmountChange(e: ChangeEvent<HTMLInputElement>) {
     const value = e.target.value;
 
     const unMaskValue = deleteMask(value) || 0;
@@ -23,7 +23,7 @@ function FeeSlip() {
     const mask = createMask({ value: unMaskValue, indicator });
 
     setAmount({ original, mask });
-  };
+  }
 
   function handleKeyDown(e: KeyboardEvent<HTMLInputElement>) {
     const isNumberOrBackspace = /[0-9]/.test(e.key) || e.key === "Backspace";
@@ -36,10 +36,18 @@ function FeeSlip() {
     return true;
   }
 
+  function changeIndicator(indicator: keyof typeof indicators) {
+    setIndicator(indicator);
+    setAmount({ original: 0, mask: "0" });
+  }
+
   return (
     <>
       <div className="flex w-full justify-end">
-        <IndicatorButtons indicator={indicator} />
+        <IndicatorButtons
+          indicator={indicator}
+          changeIndicator={changeIndicator}
+        />
       </div>
 
       <input
