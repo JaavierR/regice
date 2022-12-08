@@ -1,0 +1,17 @@
+---
+import FeeSlip from "@/components/fee-slip/FeeSlip";
+import EmptyLayout from "@/layouts/EmptyLayout.astro";
+---
+
+<EmptyLayout>
+  <main class="mx-auto w-full max-w-2xl px-4 sm:px-6 lg:px-8">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus
+    voluptatum quaerat iure consequuntur officiis? Perspiciatis labore nobis,
+    culpa reprehenderit pariatur sint libero? Culpa accusantium id sit et, a
+    repellat quis?
+
+    <FeeSlip client:load />
+
+    <ul class="grid grid-cols-2 gap-6"></ul>
+  </main>
+</EmptyLayout>
