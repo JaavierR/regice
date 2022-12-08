@@ -13,6 +13,7 @@ module.exports = {
   darkMode: "class",
   plugins: [
     require("@tailwindcss/typography"),
+    require("@tailwindcss/forms"),
     plugin(function ({ addUtilities, matchUtilities, theme }) {
       addUtilities({
         ".alternated-digits": {
@@ -346,6 +347,20 @@ module.exports = {
       keyframes: {
         loop: {
           to: { backgroundPosition: "200% center" },
+        },
+      },
+      colors: {
+        obsidian: {
+          50: "#DEDEDE",
+          100: "#D4D4D4",
+          200: "#BFBFBF",
+          300: "#ABABAB",
+          400: "#969696",
+          500: "#828282",
+          600: "#666666",
+          700: "#4A4A4A",
+          800: "#2E2E2E",
+          900: "#121212",
         },
       },
     },
