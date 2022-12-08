@@ -46,7 +46,7 @@ function FeeSlip() {
         pattern="[0-9]+([,\.][0-9]+)?"
       />
 
-      <ul className="mt-6 grid grid-cols-2 gap-6">
+      <ul className="mt-6 grid gap-6 sm:grid-cols-2">
         {options.map((opt, index) => (
           <Card
             key={index}
