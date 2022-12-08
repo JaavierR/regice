@@ -25,17 +25,6 @@ function FeeSlip() {
     setAmount({ original, mask });
   }
 
-  function handleKeyDown(e: KeyboardEvent<HTMLInputElement>) {
-    const isNumberOrBackspace = /[0-9]/.test(e.key) || e.key === "Backspace";
-
-    if (!isNumberOrBackspace) {
-      e.preventDefault();
-      return false;
-    }
-
-    return true;
-  }
-
   function changeIndicator(indicator: keyof typeof indicators) {
     setIndicator(indicator);
     setAmount({ original: 0, mask: "0" });
@@ -55,7 +44,7 @@ function FeeSlip() {
         className="mt-6 block w-full rounded-2xl border-obsidian-800 bg-obsidian-800/20 shadow-sm focus:border-obsidian-300 focus:ring-obsidian-300 focus:ring-offset-obsidian-900 sm:text-sm"
         value={amount.mask}
         onChange={handleAmountChange}
-        onKeyDown={handleKeyDown}
+        pattern="[0-9\/]*"
       />
 
       <ul className="mt-6 grid grid-cols-2 gap-6">
