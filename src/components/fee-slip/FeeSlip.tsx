@@ -12,22 +12,21 @@ let indicators = {
 };
 
 function FeeSlip() {
-  const [amount, setAmount] = useState({ original: 0, mask: "0" });
+  const [amount, setAmount] = useState({ original: "0", computed: 0 });
   const [indicator, setIndicator] = useState<keyof typeof indicators>("clp");
 
   function handleAmountChange(e: ChangeEvent<HTMLInputElement>) {
     const value = e.target.value;
 
-    const unMaskValue = deleteMask(value) || 0;
-    const original = unMaskValue * indicators[indicator];
-    const mask = createMask({ value: unMaskValue, indicator });
+    const cleanValue = parseFloat(value.replace(/[^0-9,\.]/g, ""));
+    const computedValue = cleanValue * indicators[indicator];
 
-    setAmount({ original, mask });
+    setAmount({ original: value, computed: computedValue });
   }
 
   function changeIndicator(indicator: keyof typeof indicators) {
     setIndicator(indicator);
-    setAmount({ original: 0, mask: "0" });
+    setAmount({ original: "0", computed: 0 });
   }
 
   return (
@@ -42,9 +41,9 @@ function FeeSlip() {
       <input
         type="text"
         className="mt-6 block w-full rounded-2xl border-obsidian-800 bg-obsidian-800/20 shadow-sm focus:border-obsidian-300 focus:ring-obsidian-300 focus:ring-offset-obsidian-900 sm:text-sm"
-        value={amount.mask}
+        value={amount.original}
         onChange={handleAmountChange}
-        pattern="[0-9\/]*"
+        pattern="[0-9]+([,\.][0-9]+)?"
       />
 
       <ul className="mt-6 grid grid-cols-2 gap-6">
@@ -52,7 +51,7 @@ function FeeSlip() {
           <Card
             key={index}
             title={opt}
-            amount={amount.original}
+            amount={amount.computed}
             percentage={1 - 0.1225}
           />
         ))}
