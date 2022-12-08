@@ -1,6 +1,7 @@
 import { ChangeEvent, KeyboardEvent, useState } from "react";
 import Card from "./Card";
 import { createMask, deleteMask } from "./helpers";
+import IndicatorButtons from "./IndicatorButtons";
 
 const options = ["liquido", "bruto"];
 
@@ -37,9 +38,13 @@ function FeeSlip() {
 
   return (
     <>
+      <div className="flex w-full justify-end">
+        <IndicatorButtons indicator={indicator} />
+      </div>
+
       <input
         type="text"
-        className="block w-full rounded-2xl border-obsidian-800 bg-obsidian-800/20 shadow-sm focus:border-obsidian-300 focus:ring-obsidian-300 focus:ring-offset-obsidian-900 sm:text-sm"
+        className="mt-6 block w-full rounded-2xl border-obsidian-800 bg-obsidian-800/20 shadow-sm focus:border-obsidian-300 focus:ring-obsidian-300 focus:ring-offset-obsidian-900 sm:text-sm"
         value={amount.mask}
         onChange={handleAmountChange}
         onKeyDown={handleKeyDown}
