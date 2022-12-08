@@ -1,4 +1,4 @@
-import { asClpCurency } from "./helpers";
+import { createMask } from "./helpers";
 
 function Card({
   title,
@@ -23,21 +23,21 @@ function Card({
         <div className="flex flex-col space-y-1">
           <span>La boleta debe ser por</span>
           <span className="font-semibold text-white">
-            {asClpCurency(original)}
+            {createMask({ value: original })}
           </span>
         </div>
 
         <div className="flex flex-col space-y-1 text-sm">
           <span>Recibes un pago de</span>
           <span id="get" className="text-green-400">
-            {asClpCurency(payment)}
+            {createMask({ value: payment })}
           </span>
         </div>
 
         <div className="flex flex-col space-y-1 text-sm">
           <span> Retenci&oacute;n SII</span>
           <span id="sii" className="text-red-400">
-            {asClpCurency(fee)}
+            {createMask({ value: fee })}
           </span>
         </div>
       </div>

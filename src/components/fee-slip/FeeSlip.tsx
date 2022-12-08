@@ -1,16 +1,27 @@
 import { ChangeEvent, KeyboardEvent, useState } from "react";
 import Card from "./Card";
-import { asClpCurency, revertClpCurency } from "./helpers";
+import { createMask, deleteMask } from "./helpers";
 
 const options = ["liquido", "bruto"];
 
+let indicators = {
+  usd: 884.74,
+  uf: 34858.13,
+  clp: 1,
+};
+
 function FeeSlip() {
   const [amount, setAmount] = useState({ original: 0, mask: "$0" });
+  const [indicator, setIndicator] = useState<keyof typeof indicators>("usd");
 
   const handleAmountChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    const pureValue = revertClpCurency(value) || 0;
-    setAmount({ original: pureValue, mask: asClpCurency(pureValue) });
+
+    const unMaskValue = deleteMask(value) || 0;
+    const original = unMaskValue * indicators[indicator];
+    const mask = createMask({ value: unMaskValue, indicator });
+
+    setAmount({ original, mask });
   };
 
   function handleKeyDown(e: KeyboardEvent<HTMLInputElement>) {
