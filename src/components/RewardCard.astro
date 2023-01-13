@@ -14,18 +14,18 @@ const { details } = Astro.props as Props;
 ---
 
 <div
-  class="rounded-[1.25rem] text-xs bg-white/10 backdrop-blur-lg border border-white/30 p-[1.375rem] dark:text-zinc-300 w-[350px]"
+  class="rounded-[1.25rem] text-sm bg-white/10 backdrop-blur-lg border border-white/30 p-[1.375rem] dark:text-zinc-300 w-[365px]"
 >
-  <div class="overflow-hidden h-[20rem] rounded-lg">
+  <div class="overflow-hidden h-[20.875rem] rounded-lg">
     <img src={details.image} alt="" class="object-cover w-full h-full" />
   </div>
 
-  <div class="mt-5">
+  <div class="mt-6">
     <p>{details.sentence}</p>
 
-    <h1 class="pt-4">{details.user}</h1>
+    <h1 class="pt-5">{details.user}</h1>
 
-    <div class="flex justify-between pt-2">
+    <div class="flex justify-between pt-3">
       <div class="flex items-center space-x-2">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -60,7 +60,7 @@ const { details } = Astro.props as Props;
   </div>
 
   <div
-    class="mt-4 grid grid-cols-3 border rounded border-white/30 justify-items-stretch"
+    class="mt-5 grid grid-cols-3 border rounded border-white/30 justify-items-stretch"
   >
     <div class="border-r border-white/20 text-center">Certified by</div>
     <div
