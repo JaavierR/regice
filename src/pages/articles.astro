@@ -1,74 +1,23 @@
 ---
 import Container from "@/components/Container.astro";
+import RewardCard from "@/components/RewardCard.astro";
 import Layout from "@/layouts/Layout.astro";
+
+const javierCard = {
+  image:
+    "https://images.unsplash.com/photo-1671929520129-8cb61c22d746?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
+  sentence: "Here’s your official badge, bask in its aesthetic!",
+  user: "Javier Reyes",
+  rank: "Illusionist Ace",
+  date: "2023/01/01",
+  company: " Company Σ",
+};
 ---
 
 <Layout>
   <Container class="mt-16 sm:mt-32">
-    <div class="max-w-[23rem]">
-      <div
-        class="rounded-2xl bg-white/10 backdrop-blur-lg border border-white/20 p-6 dark:text-zinc-300 text-sm w-full"
-      >
-        <div class="overflow-hidden h-[22rem] rounded-lg">
-          <img
-            src="https://images.unsplash.com/photo-1507214617719-4a3daf41b9ac?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YXJjaGl0ZWN0dXJlJTIwY3VydmVzJTIwcGF0dGVybnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
-            alt=""
-            class="object-cover w-full h-full"
-          />
-        </div>
-
-        <div class="mt-4 text-sm">
-          <p>Here&rsquo;s your official badge, bask in its aesthetic!</p>
-
-          <h1 class="pt-4">Augustine Rogge</h1>
-
-          <div class="flex justify-between pt-2">
-            <div class="flex items-center space-x-2">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                class="w-6 h-6"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M8.603 3.799A4.49 4.49 0 0112 2.25c1.357 0 2.573.6 3.397 1.549a4.49 4.49 0 013.498 1.307 4.491 4.491 0 011.307 3.497A4.49 4.49 0 0121.75 12a4.49 4.49 0 01-1.549 3.397 4.491 4.491 0 01-1.307 3.497 4.491 4.491 0 01-3.497 1.307A4.49 4.49 0 0112 21.75a4.49 4.49 0 01-3.397-1.549 4.49 4.49 0 01-3.498-1.306 4.491 4.491 0 01-1.307-3.498A4.49 4.49 0 012.25 12c0-1.357.6-2.573 1.549-3.397a4.49 4.49 0 011.307-3.497 4.49 4.49 0 013.497-1.307zm7.007 6.387a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
-                  clip-rule="evenodd"></path>
-              </svg>
-
-              <span>Gifted Gathered</span>
-            </div>
-
-            <div
-              class="overflow-hidden text-xs before:content-['··························'] before:[mask-image:linear-gradient(90deg,rgba(0,0,0,0)_15%,#000_45%,#000_55%,rgba(0,0,0,0)_85%)]"
-            >
-            </div>
-
-            <div>
-              {
-                new Date().toLocaleDateString("en-US", {
-                  year: "numeric",
-                  month: "short",
-                  day: "numeric",
-                })
-              }
-            </div>
-          </div>
-        </div>
-
-        <div
-          class="mt-4 grid grid-cols-3 border rounded border-white/30 justify-items-stretch"
-        >
-          <div class="border-r border-white/20 text-center">Certified by</div>
-          <div
-            class="pattern-lines-diagonal-right-white/70 pattern-lines-diagonal-right-scale-50"
-          >
-          </div>
-          <div class="border-l border-white/20 text-center">
-            Company &Sigma;
-          </div>
-        </div>
-      </div>
+    <div class="max-w-sm">
+      <RewardCard details={javierCard} />
     </div>
   </Container>
 </Layout>
