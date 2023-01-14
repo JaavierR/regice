@@ -14,7 +14,7 @@ const { details } = Astro.props as Props;
 ---
 
 <div
-  class="rounded-[1.25rem] text-sm bg-white/10 backdrop-blur-lg border border-white/30 p-[1.375rem] dark:text-zinc-300 w-[365px]"
+  class="rounded-[1.25rem] text-xs sm:text-sm bg-white/10 backdrop-blur-lg border border-white/30 p-[1.375rem] dark:text-zinc-300 w-full max-w-[365px]"
 >
   <div class="overflow-hidden h-[20.875rem] rounded-lg">
     <img src={details.image} alt="" class="object-cover w-full h-full" />
