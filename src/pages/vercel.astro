@@ -1,0 +1,97 @@
+---
+import VercelCard from "@/components/VercelCard.astro";
+import Layout from "@/layouts/Layout.astro";
+
+const users = [
+  {
+    name: "Javier Reyes",
+    username: "leturques",
+    country: "Chile",
+    role: "Software Engineer",
+    image:
+      "https://images.unsplash.com/photo-1521119989659-a83eee488004?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1446&q=80",
+  },
+  {
+    name: "Ricardo Orellana",
+    username: "rickyore",
+    country: "Chile",
+    role: "Peoplesoft Engineer",
+    image:
+      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80",
+  },
+  {
+    name: "Sofi Vera",
+    username: "sofivera",
+    country: "Chile",
+    role: "Project Engineer",
+    image:
+      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1364&q=80",
+  },
+  {
+    name: "Franco Jonas",
+    username: "frncojonas",
+    country: "Canada",
+    role: "Brand Designer",
+    image:
+      "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80",
+  },
+  {
+    name: "Valentina Ramos",
+    username: "valeramos",
+    country: "Chile",
+    role: "Industrial Engineer",
+    image:
+      "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1364&q=80",
+  },
+  {
+    name: "Tamara Quiroz",
+    username: "tammyquiroz",
+    country: "Chile",
+    role: "Internal Control Analyst",
+    image:
+      "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80",
+  },
+  {
+    name: "Javier Donoso",
+    username: "javierdonoso",
+    country: "Chile",
+    role: "Industrial Engineer",
+    image:
+      "https://images.unsplash.com/photo-1532123675048-773bd75df1b4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+  },
+  {
+    name: "Nicolas Pincheira",
+    username: "nicopinch",
+    country: "Chile",
+    role: "Marketing Manager",
+    image:
+      "https://images.unsplash.com/photo-1516914943479-89db7d9ae7f2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+  },
+];
+---
+
+<Layout>
+  <div class="max-w-7xl mx-auto text-white px-2 sm:px-4 lg:px-6">
+    <div
+      id="cards"
+      class="w-full grid mt-16 gap-6 grid-cols-[repeat(auto-fill,minmax(theme(width.72),1fr))]"
+    >
+      {users.map((user) => <VercelCard user={user} />)}
+    </div>
+  </div>
+</Layout>
+
+<script>
+  (document.getElementById("cards") as HTMLElement).onmousemove = (e) => {
+    for (const card of document.getElementsByClassName(
+      "group"
+    ) as HTMLCollectionOf<HTMLElement>) {
+      const rect = card.getBoundingClientRect(),
+        x = e.clientX - rect.left,
+        y = e.clientY - rect.top;
+
+      card.style.setProperty("--x", x + "px");
+      card.style.setProperty("--y", y + "px");
+    }
+  };
+</script>

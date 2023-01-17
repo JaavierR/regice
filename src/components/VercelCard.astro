@@ -1,0 +1,44 @@
+---
+interface Props {
+  user: {
+    name: string;
+    username: string;
+    role: string;
+    country: string;
+    image: string;
+  };
+}
+
+const { user } = Astro.props as Props;
+---
+
+<div
+  id="hero"
+  class="relative group overflow-hidden w-full rounded-2xl border border-[#333] bg-black/40 pt-2 px-2 before:content-[''] before:block before:absolute before:h-full before:w-full before:inset-0 before:rounded-[inherit] before:bg-[radial-gradient(800px_circle_at_calc(var(--x)*1)_calc(var(--y)*1),#ffffff33,transparent_40%)] before:z-[1] cursor-pointer"
+>
+  <img
+    src={user.image}
+    alt=""
+    class="rounded-xl object-cover aspect-[3/4] h-full max-h-[363px] w-full transition duration-[400ms] ease-in-out text-transparent grayscale group-hover:grayscale-0"
+  />
+  <img
+    src={user.image}
+    alt=""
+    class="absolute aspect-[3/4] h-full max-h-[363px] scale-110 top-0 -z-[1] left-0 will-change-[filter] pointer-events-none w-full transition duration-[400ms] ease-in-out text-transparent saturate-200 grayscale blur-xl group-hover:grayscale-0"
+  />
+
+  <div class="py-3 px-2 flex flex-col items-stretch justify-start gap-1">
+    <div class="flex flex-row items-center justify-between flex-initial">
+      <h3 class="text-[#fafafa] font-medium text-base">{user.name}</h3>
+      <span
+        class="text-[#888] font-normal text-sm [font-feature-settings:_'cv11','ss02']"
+      >
+        @{user.username}
+      </span>
+    </div>
+    <div class="flex flex-row items-center justify-between flex-initial">
+      <span class="text-[#888] font-normal text-sm">{user.role}</span>
+      <span class="text-[#888] font-normal text-sm">{user.country}</span>
+    </div>
+  </div>
+</div>
