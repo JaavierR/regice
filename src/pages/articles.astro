@@ -1,0 +1,23 @@
+---
+import Container from "@/components/Container.astro";
+import RewardCard from "@/components/RewardCard.astro";
+import Layout from "@/layouts/Layout.astro";
+
+const javierCard = {
+  image:
+    "https://images.unsplash.com/photo-1671929520129-8cb61c22d746?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
+  sentence: "Here’s your official badge, bask in its aesthetic!",
+  user: "Javier Reyes",
+  rank: "Illusionist Ace",
+  date: "2023/01/01",
+  company: " Company Σ",
+};
+---
+
+<Layout>
+  <Container class="mt-16 sm:mt-32">
+    <div class="">
+      <RewardCard details={javierCard} />
+    </div>
+  </Container>
+</Layout>

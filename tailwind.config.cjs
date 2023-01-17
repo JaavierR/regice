@@ -24,6 +24,9 @@ module.exports = {
         ".stylistic-alternates": {
           fontFeatureSettings: '"salt"',
         },
+        ".pattern-lines-diagonal-right": {
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='currentColor' fill-opacity='1' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E")`,
+        },
       });
 
       matchUtilities(
@@ -35,6 +38,35 @@ module.exports = {
         {
           values: flattenColorPalette(theme("backgroundColor")),
           type: "color",
+        }
+      );
+
+      matchUtilities(
+        {
+          "pattern-lines-diagonal-right": (value) => ({
+            backgroundImage:
+              `url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='currentColor' fill-opacity='1' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E")`.replace(
+                /currentColor/g,
+                value
+              ),
+            backgroundPosition: "center",
+          }),
+        },
+        {
+          values: flattenColorPalette(theme("colors")),
+          type: "color",
+        }
+      );
+
+      matchUtilities(
+        {
+          "pattern-lines-diagonal-right-scale": (value) => ({
+            backgroundSize: `${value * 6}px ${value * 6}px`,
+          }),
+        },
+        {
+          values: theme("scale"),
+          type: "number",
         }
       );
     }),
@@ -362,6 +394,9 @@ module.exports = {
           800: "#91203e",
           900: "#7c1f3a",
         },
+      },
+      boxShadow: {
+        highlight: "inset 0 0 0 1px rgba(255, 255, 255, 0.05)",
       },
     },
   },
