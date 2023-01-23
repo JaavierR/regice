@@ -1,0 +1,57 @@
+---
+import Layout from "@/layouts/Layout.astro";
+---
+
+<Layout>
+  <div class="max-w-7xl mx-auto text-white pt-16 px-6">
+    <h1 class="text-2xl font-medium">Shiny button ✨ based on Oguz tweet</h1>
+
+    <div class="mt-8 space-y-4">
+      <p>This button is inspired by</p>
+
+      <div id="cards" class="flex gap-6">
+        <div
+          id="card"
+          class="relative cursor-pointer h-64 w-80 rounded-xl bg-white/10 before:content-[''] before:h-full before:w-full before:inset-0 before:absolute before:rounded-[inherit] before:[background:_radial-gradient(800px_circle_at_var(--x)_var(--y),hsla(0,_0%,_100%,_0.06),_transparent_40%)] before:[transition:_opacity_500ms] before:opacity-0 before:hover:opacity-100 before:z-[3] after:content-[''] after:h-full after:w-full after:inset-0 after:absolute after:rounded-[inherit] after:[background:_radial-gradient(600px_circle_at_var(--x)_var(--y),hsla(0,_0%,_100%,_0.4),_transparent_40%)] after:[transition:_opacity_500ms] after:opacity-0 after:hover:opacity-100 after:z-[1]"
+        >
+          <div
+            class="bg-[rgb(18,18,18)] rounded-[inherit] inset-px flex flex-col grow absolute p-2.5 z-[2]"
+          >
+          </div>
+        </div>
+      </div>
+
+      <div
+        id="card"
+        class="relative inline-block cursor-pointer rounded-full bg-white/10 before:content-[''] before:h-full before:w-full before:inset-0 before:absolute before:rounded-[inherit] before:[background:_radial-gradient(100px_circle_at_var(--x)_var(--y),hsla(0,_0%,_100%,_0.06),_transparent_40%)] before:[transition:_opacity_500ms] before:opacity-0 before:hover:opacity-100 before:z-[3] after:content-[''] after:h-full after:w-full after:inset-0 after:absolute after:rounded-[inherit] after:[background:_radial-gradient(50px_circle_at_var(--x)_var(--y),hsla(0,_0%,_100%,_0.8),_transparent_40%)] after:[transition:_opacity_500ms] after:opacity-0 after:hover:opacity-100 after:z-[1]"
+      >
+        <div
+          class="bg-[rgb(18,18,18)] rounded-[inherit] inset-px flex flex-col grow absolute p-2.5 z-[2]"
+        >
+        </div>
+        <div class="z-10 relative px-5 py-2">Button</div>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  function handleMouseMove(e: MouseEvent) {
+    const { currentTarget: target } = e;
+
+    if (!(target instanceof HTMLElement)) return;
+
+    const rect = target.getBoundingClientRect(),
+      x = e.clientX - rect.left,
+      y = e.clientY - rect.top;
+
+    console.log({ x, y });
+
+    target.style.setProperty("--x", x + "px");
+    target.style.setProperty("--y", y + "px");
+  }
+
+  for (const card of document.querySelectorAll("#card")) {
+    (card as HTMLElement).onmousemove = (e) => handleMouseMove(e);
+  }
+</script>
