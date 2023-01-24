@@ -10,10 +10,10 @@
     "astro": "astro"
   },
   "devDependencies": {
-    "@astrojs/image": "0.12.1",
-    "@astrojs/mdx": "0.14.0",
-    "@astrojs/react": "1.2.2",
-    "@astrojs/vercel": "2.4.0",
+    "@astrojs/image": "0.13.0",
+    "@astrojs/mdx": "0.15.0",
+    "@astrojs/react": "2.0.0",
+    "@astrojs/vercel": "3.0.0",
     "@headlessui/react": "1.7.7",
     "@mapbox/rehype-prism": "0.8.0",
     "@tailwindcss/typography": "0.5.9",
