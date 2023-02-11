@@ -1,0 +1,73 @@
+---
+import Layout from "@/layouts/Layout.astro";
+---
+
+<Layout>
+  <div class="px-4 max-w-7xl mx-auto sm:px-6 lg:px-8 mt-10 flex space-x-10">
+    <span
+      class="bg-yellow-100 text-yellow-700 border-yellow-300/40 border rounded-md px-4 py-1 inline-flex text-sm"
+      >To make the shadows pop is needed the&nbsp;
+      <span class="font-medium">bg-clip-padding</span> &nbsp;prop</span
+    >
+  </div>
+  <div class="px-4 max-w-7xl mx-auto sm:px-6 lg:px-8 mt-10 flex space-x-10">
+    <div class="dark:bg-[#262626] p-6 rounded-md self-start">
+      <h2 class="mb-2 text-lg font-medium dark:text-[#fafafa]">
+        Dropdown menu
+      </h2>
+      <div class="relative w-24">
+        <button
+          class="bg-[#fff] dark:bg-[#313131] text-[#171717] dark:text-[#fafafa] relative flex h-8 w-full cursor-pointer items-center space-x-2 rounded-md border pl-3 pr-10 text-left dark:border-[hsla(0,0%,100%,.12)] border-black/5 shadow-black/5 dark:shadow-black/[.15] text-sm shadow-test focus-visible:border-blue-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-100 dark:focus-visible:ring-blue-600/40 sm:text-sm bg-clip-padding"
+          id="headlessui-listbox-button-:r1j:"
+          type="button"
+          aria-haspopup="listbox"
+          aria-expanded="false"
+          data-headlessui-state=""
+        >
+          <span class="block truncate">5pm</span><span
+            class="text-primary pointer-events-none absolute inset-y-0 right-0 flex items-center pr-1 text-opacity-50"
+            ><svg
+              width="20"
+              height="20"
+              fill="none"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path
+                d="M16.125 10L12.0625 14.375L8 10"
+                stroke="currentColor"
+                stroke-width="1.875"
+                stroke-linecap="round"
+                stroke-linejoin="round"></path>
+            </svg>
+          </span>
+        </button>
+      </div>
+    </div>
+
+    <div class="dark:bg-[#262626] p-6 rounded-md self-start">
+      <h2 class="text-lg mb-2 font-medium dark:text-[#fafafa]">Button</h2>
+      <a
+        class="focus-visible:ring-2 focus-visible:ring-blue-300 dark:focus-visible:ring-blue-600 font-semibold inline-flex items-center justify-center focus-visible:outline-none border border-transparent focus-visible:border-blue-500 leading-none rounded-md touch-none select-none text-[13px] disabled:opacity-50 disabled:cursor-not-allowed w-auto flex-none px-3.5 border-none h-[30px] dark:[&>span]:drop-shadow-button-content bg-[#fff] text-[#171717] shadow-button relative transform-gpu before:hidden dark:before:block before:absolute before:-inset-[1.5px] before:rounded-lg before:border-[.5px] before:border-black/80 after:block after:absolute after:-inset-[1px] after:rounded-md after:bg-gradient-to-t after:from-black/5 dark:after:from-black/[0.15] after:opacity-50 hover:after:opacity-100 after:transition-opacity dark:bg-[#313131] dark:text-[#fafafa] dark:shadow-button-dark"
+        href="#"
+        ><span>Add event</span>
+      </a>
+    </div>
+
+    <div class="dark:bg-[#262626] p-6 rounded-md">
+      <h2 class="text-lg mb-2 font-medium dark:text-[#fafafa]">Container</h2>
+      <div class="bg-[#fafafa] dark:bg-[#1e1e1e] grid content-center p-5">
+        <div
+          class="bg-white dark:text-[#fafafa] dark:bg-[#262626] rounded-md border shadow-test shadow-black/5 border-black/[.08] bg-clip-padding dark:shadow-black/[.14] dark:border-[hsla(0,0%,100%,.12)]"
+        >
+          <span class="px-4 py-2 block"> try container</span>
+          <div
+            class="rounded-b-lg text-center bg-[#fafafa] dark:bg-[#1e1e1e] border-t py-1 border-black/5 dark:border-[hsla(0,0%,100%,.08)] text-sm font-medium"
+          >
+            Acepto
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

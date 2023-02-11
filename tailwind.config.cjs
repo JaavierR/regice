@@ -397,6 +397,11 @@ module.exports = {
       },
       boxShadow: {
         highlight: "inset 0 0 0 1px rgba(255, 255, 255, 0.05)",
+        button:
+          "inset 0px 1px 0px 0px #fff,0px 0px 0px 1px rgba(0,0,0,.06),0px 1px 0px 0px rgba(0,0,0,.08),0px 2px 2px 0px rgba(0,0,0,.04),0px 3px 3px 0px rgba(0,0,0,.02),0px 4px 4px 0px rgba(0,0,0,.01)",
+        "button-dark":
+          "0px -1px 0px 0px hsla(0,0%,100%,.04),0px 0px 0px 1px hsla(0,0%,100%,.12),0px 0px 1px 0px rgba(0,0,0,.04),0px 2px 2px 0px rgba(0,0,0,.04),0px 4px 2px 0px rgba(0,0,0,.04),0px 6px 3px 0px rgba(0,0,0,.04)",
+        test: "0px 3px 6px -3px var(--tw-shadow-color),0px 2px 4px -2px var(--tw-shadow-color),0px 1px 2px -1px var(--tw-shadow-color),0px 1px 1px -1px var(--tw-shadow-color),0px 1px 0px -1px var(--tw-shadow-color)",
       },
     },
   },
